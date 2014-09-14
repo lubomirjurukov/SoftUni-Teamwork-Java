@@ -30,7 +30,7 @@ public class Enemy extends JPanel {
     public int X= Main.mainFrame.getWidth();
     public int Y = rand.nextInt(Main.mainFrame.getHeight()-20);
     public void update(){
-        X -= 10;
+        this.X -= 5;
 
         if(X <= 0) {
              X= Main.mainFrame.getWidth();

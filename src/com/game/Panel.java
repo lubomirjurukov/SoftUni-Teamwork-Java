@@ -51,7 +51,7 @@ public class Panel extends JPanel implements ActionListener{
         	if(Main.player.detectCollision(Main.enemys.get(i))){
         		System.exit(0);
         	}
-        	
+       	
         	Main.enemys.get(i).update();
         } 
     	timer++;

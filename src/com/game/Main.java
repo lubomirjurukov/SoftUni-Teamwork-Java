@@ -1,9 +1,13 @@
 package com.game;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JFrame;
 
 public class Main{
 	public static Player player = new Player();
 	public static JFrame mainFrame = new JFrame("");
+	public static List<Enemy> enemys = new ArrayList<Enemy>();
 	public static void main(String[] args) {
 		
 		mainFrame.setSize(800, 600);

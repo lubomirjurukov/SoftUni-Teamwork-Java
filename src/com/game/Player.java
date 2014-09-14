@@ -1,10 +1,13 @@
 package com.game;
 
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import javax.swing.JPanel;
 
 public class Player extends JPanel{
-	
+	private Image image = Toolkit.getDefaultToolkit().createImage("res/penguin.jpg");
 	int x = 0;
 	int y = 0;
 	boolean alive = true;
@@ -30,17 +33,35 @@ public class Player extends JPanel{
 	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		g.fillOval(x, y, 20, 20);
+		g.drawImage(image,x,y,null);
 	}
 	
 	public boolean detectCollision(Enemy enemy){
-		int a = enemy.getX();
+		int a = enemy.getY()+enemy.getRandHeight()/2;
 		int b = enemy.getY();
-		if (this.x == a && this.y == b) {
-			return true;
-		} 
-		else {
-			return false;}
+		int R = image.getWidth(null)/2;
+		for(int i = 0; i<R;i++){
+			int y = R - i;
+			double x = Math.sqrt(Math.pow(R,2) - Math.pow(y,2));
+			x=Math.floor(x);
+			if (x>=b && x<=a){
+				return alive = false;
+			}
+		}
+		for(int i = R-1; i<0;i--){
+			int y = R - i;
+			double x = Math.sqrt(Math.pow(R,2) - Math.pow(y,2));
+			x=Math.floor(x);
+			if (x>=b && x<=a){
+				return alive = false;
+			}
+		}
+		return alive = true;
 	}
 	
+	public void ifAlive(boolean death) {
+		if(!death) {
+			
+		}
+	}
 }

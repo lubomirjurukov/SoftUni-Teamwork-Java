@@ -10,20 +10,21 @@ public class Enemy extends JPanel {
     Random rand = new Random();
     int randWidth = rand.nextInt(60);
     int randHeight = rand.nextInt(60);
-
+    
+    public int getRandHeight() {
+    	return this.randHeight;
+    }
+    
     public int getX() {
-        return X;
+        return this.X;
     }
 
     public void setX(int x) {
-        X = x;
+        this.X = x;
     }
 
     public int getY() {
-        return Y;
-    }
-
-    public void setY(int y) {
+        return this.Y;
     }
 
     public int X= Main.mainFrame.getWidth();

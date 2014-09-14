@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 public class Enemy extends JPanel {
 
     Random rand = new Random();
+    int randWidth = rand.nextInt(60);
+    int randHeight = rand.nextInt(60);
 
     public int getX() {
         return X;
@@ -27,12 +29,20 @@ public class Enemy extends JPanel {
     public int X= Main.mainFrame.getWidth();
     public int Y = rand.nextInt(Main.mainFrame.getHeight()-20);
     public void update(){
-        X += 3;
+        X -= 10;
+
+        if(X <= 0) {
+             X= Main.mainFrame.getWidth();
+             Y = rand.nextInt(Main.mainFrame.getHeight()-20);
+            randWidth = rand.nextInt(160);
+            randHeight = rand.nextInt(160);
+
+        }
 
     }
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-        g.fillRect(20, 20, 20, 20);
+        g.fillRect(X, Y, randWidth, randHeight);
 	}
 
 }

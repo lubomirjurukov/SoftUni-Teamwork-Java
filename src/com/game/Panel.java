@@ -8,10 +8,6 @@ import javax.swing.Timer;
 
 public class Panel extends JPanel implements ActionListener{
 	private Input input = new Input();
-	//temporary variables
-    private int x = 250;
-    private int y = 250;
-    private int diameter = 20;
     //construct a Panel
     public Panel(){
         //setBackground(Color.BLACK);
@@ -34,7 +30,7 @@ public class Panel extends JPanel implements ActionListener{
     //paint 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.fillOval(x, y, diameter, diameter);
+        Main.player.paintComponent(g);
         new Enemy().paintComponent(g);
     }
 }

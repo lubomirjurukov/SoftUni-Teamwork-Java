@@ -2,7 +2,7 @@ package com.game;
 import javax.swing.JFrame;
 
 public class Main{
-
+	public static Player player = new Player();
 	public static void main(String[] args) {
 		JFrame mainFrame = new JFrame("");
 		mainFrame.setSize(800, 600);

@@ -37,13 +37,22 @@ public class Panel extends JPanel implements ActionListener{
     	if(input.down&&Main.player.y<=Main.mainFrame.getHeight()-50){
     		Main.player.y+=3;
     	}
+    	if(input.left&&Main.player.x>=0){
+    		Main.player.x-=3;
+    	}
+    	if(input.right&&Main.player.x<=200){
+    		Main.player.x+=3;
+    	}
     	if(timer==10&&!(Main.enemys.size()>20)){
     		Main.enemys.add(new Enemy());
     		timer=0;
     	}
         for(int i = 0;i<Main.enemys.size();i++){
-        	Main.player.detectCollision(Main.enemys.get(i));
-        	Main.enemys.get(i).update();;
+        	if(Main.player.detectCollision(Main.enemys.get(i))){
+        		System.exit(0);
+        	}
+        	
+        	Main.enemys.get(i).update();
         } 
     	timer++;
         repaint();

@@ -10,7 +10,6 @@ public class Player extends JPanel{
 	private Image image = Toolkit.getDefaultToolkit().createImage("res/penguin.png");
 	int x = 0;
 	int y = 0;
-	boolean alive = true;
 	
 	public int getX(){
 		return this.x;
@@ -27,10 +26,6 @@ public class Player extends JPanel{
 		this.y = y;
 	}
 	
-	public void setLive(boolean death) {
-		this.alive = death;
-	}
-	
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.drawImage(image,x,y,null);
@@ -38,13 +33,5 @@ public class Player extends JPanel{
 	
 	public boolean detectCollision(Enemy enemy){
 			return (enemy.getX()-x)*(enemy.getX()-x) + (enemy.getY()-y)*(enemy.getY()-y) <= (50 * 50);
-		
-		//return alive = true;
-	}
-	
-	public void ifAlive(boolean death) {
-		if(death) {
-			System.exit(0);
-		}
 	}
 }

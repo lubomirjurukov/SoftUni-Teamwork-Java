@@ -8,10 +8,12 @@ import javax.swing.Timer;
 
 public class Panel extends JPanel implements ActionListener{
 	private Input input = new Input();
+	private int timer = 0;
     //construct a Panel
     public Panel(){
         //setBackground(Color.BLACK);
-        //call step() 60 fps
+    	Main.player.setY(Main.mainFrame.getHeight()/2);
+    	Main.enemys.add(new Enemy());
         Timer timer = new Timer(1000/60, this);
         timer.start();
     }
@@ -23,14 +25,22 @@ public class Panel extends JPanel implements ActionListener{
     }
 
     public void step(){
-    	//movement
-    	new Enemy().update();
+    	if(timer==10&&!(Main.enemys.size()>40)){
+    		Main.enemys.add(new Enemy());
+    		timer=0;
+    	}
+        for(int i = 0;i<Main.enemys.size();i++){
+        	Main.enemys.get(i).update();;
+        } 
+    	timer++;
         repaint();
     }
-    //paint 
+    
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Main.player.paintComponent(g);
-        new Enemy().paintComponent(g);
+        for(int i = 0;i<Main.enemys.size();i++){
+        	Main.enemys.get(i).paintComponent(g);
+        }   
     }
 }

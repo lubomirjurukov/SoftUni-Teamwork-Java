@@ -7,7 +7,8 @@ import java.awt.Toolkit;
 import javax.swing.JPanel;
 
 public class Player extends JPanel {
-	private Image image = Toolkit.getDefaultToolkit().createImage("res/penguin.gif");
+	private Image image = Toolkit.getDefaultToolkit().createImage(
+			"res/penguin.gif");
 	int x = 0;
 	int y = 0;
 	int width = 50;
@@ -49,6 +50,7 @@ public class Player extends JPanel {
 		}
 		return collision;
 	}
+
 	public boolean detectBonusCollision(Bonus bonus) {
 		for (int bonusY = 0; bonusY <= bonus.randSize; bonusY++) {
 			for (int bonusX = 0; bonusX <= bonus.randSize; bonusX++) {

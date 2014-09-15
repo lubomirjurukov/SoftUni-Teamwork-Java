@@ -3,7 +3,6 @@ package com.game;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
 public class Input implements KeyListener {
 	public boolean up = false;
 	public boolean down = false;
@@ -37,7 +36,7 @@ public class Input implements KeyListener {
 			System.exit(0);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-			enter=true;
+			enter = true;
 		}
 	}
 
@@ -56,7 +55,7 @@ public class Input implements KeyListener {
 
 		}
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-			enter=false;
+			enter = false;
 		}
 	}
 }

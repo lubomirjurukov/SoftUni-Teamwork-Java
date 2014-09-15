@@ -9,8 +9,8 @@ public class Enemy extends JPanel {
 	
 
     Random rand = new Random();
-    int randWidth = rand.nextInt(60);
-    int randHeight = rand.nextInt(60);
+    int randWidth = rand.nextInt(60)+ 10;
+    int randHeight = rand.nextInt(60) + 10;
     
     public int getRandHeight() {
     	return this.randHeight;
@@ -32,8 +32,8 @@ public class Enemy extends JPanel {
         return this.Y;
     }
 
-    public int X= Main.mainFrame.getWidth();
-    public int Y = rand.nextInt(Main.mainFrame.getHeight()-20);
+    public int X;
+    public int Y;
 
     public void generate(Enemy enemy) {
 		
@@ -48,12 +48,11 @@ public class Enemy extends JPanel {
         this.X -= 5;
         if(X <= 0) {
            
-        	int X= Main.mainFrame.getWidth();
-            int Y = rand.nextInt(Main.mainFrame.getHeight()-20);
-           
-           
-             randWidth = rand.nextInt(160);
-             randHeight = rand.nextInt(160);
+        	X= Main.mainFrame.getWidth();
+            Y = rand.nextInt(Main.mainFrame.getHeight()-20);
+              
+             randWidth = rand.nextInt(60) + 10;
+             randHeight = rand.nextInt(60) + 10;
 
         }
 

@@ -50,12 +50,12 @@ public class Player extends JPanel {
 		return collision;
 	}
 	public boolean detectBonusCollision(Bonus bonus) {
-		for (int enemyY = 0; enemyY <= bonus.randSize; enemyY++) {
-			for (int enemyX = 0; enemyX <= bonus.randSize; enemyX++) {
-				if (((bonus.getX() + enemyX) - (x + width / 2))
-						* ((bonus.getX() + enemyX) - (x + width / 2))
-						+ ((bonus.getY() + enemyY) - (y + height / 2))
-						* ((bonus.getY() + enemyY) - (y + height / 2)) <= (width
+		for (int bonusY = 0; bonusY <= bonus.randSize; bonusY++) {
+			for (int bonusX = 0; bonusX <= bonus.randSize; bonusX++) {
+				if (((bonus.getX() + bonusX) - (x + width / 2))
+						* ((bonus.getX() + bonusX) - (x + width / 2))
+						+ ((bonus.getY() + bonusY) - (y + height / 2))
+						* ((bonus.getY() + bonusY) - (y + height / 2)) <= (width
 						/ 2 * width / 2)) {
 					collision = true;
 				}

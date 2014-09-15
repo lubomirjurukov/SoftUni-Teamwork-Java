@@ -3,6 +3,7 @@ package com.game;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -46,12 +47,25 @@ public class Panel extends JPanel implements ActionListener{
 	    		Main.enemys.add(new Enemy());
 	    		timer=0;
 	    	}
+	    	if(timer==10&&!(Main.bonus.size()>40)){
+	    		Main.bonus.add(new Bonus());
+	    		timer=0;
+	    	}
 	        for(int i = 0;i<Main.enemys.size();i++){
-	        	if(Main.player.detectCollision(Main.enemys.get(i))){
-	        		System.exit(0);
+	        	Main.enemys.get(i).update();
+	        	if(Main.player.detectEnemyCollision(Main.enemys.get(i))){
+	        		//System.exit(0);
 	        	}
-	        Main.enemys.get(i).update();
-        }
+	        
+	        }
+	        for(int i = 0;i<Main.bonus.size();i++){
+	        	Main.bonus.get(i).update();
+	        	if(Main.player.detectBonusCollision(Main.bonus.get(i))){
+		        	Main.bonus.get(i).getBonus();//input, Main.enemys.get(k));
+	        		Main.bonus.remove(Main.toRemove);
+	        		Main.player.collision = false;
+	        	}
+	        }
         Main.background.update();
     	timer++;
     	}
@@ -72,6 +86,9 @@ public class Panel extends JPanel implements ActionListener{
         	Main.player.paintComponent(g);
         	for(int i = 0;i<Main.enemys.size();i++){
         		Main.enemys.get(i).paintComponent(g);
+        	}
+        	for(int i = 0;i<Main.bonus.size();i++){
+        		Main.bonus.get(i).paintComponent(g);
         	}
         }
     }

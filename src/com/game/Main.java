@@ -6,9 +6,12 @@ import javax.swing.JFrame;
 
 public class Main{
 	public static Player player = new Player();
+	public static int speed = 5;
+	public static List<Bonus> toRemove = new ArrayList<Bonus>();
 	public static Background background = new Background();
 	public static JFrame mainFrame = new JFrame("");
 	public static List<Enemy> enemys = new ArrayList<Enemy>();
+	public static List<Bonus> bonus = new ArrayList<Bonus>();
 	public static Panel panel = new Panel();
 	public static Menu menu =new Menu();
 	private static boolean init = false;

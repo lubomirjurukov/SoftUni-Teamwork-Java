@@ -24,8 +24,8 @@ public class Background extends JPanel{
 		}
 	}
 	public void update(){
-		x1-=speed;
-		x2-=speed;
+		x1-=Main.speed;
+		x2-=Main.speed;
 		if(Math.abs(x1)>width){
 			x1=0;
 		}

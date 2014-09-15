@@ -13,12 +13,11 @@ import javax.swing.Timer;
 
 public class Panel extends JPanel implements ActionListener{
 	private Input input = new Input();
-	private Image image = Toolkit.getDefaultToolkit().createImage("res/penguin.png");
+	private boolean gameRunning = true;
 	private int timer = 0;
     //construct a Panel
     public Panel(){
         //setBackground(Color.BLACK);
-    	Main.player.setY(Main.mainFrame.getHeight()/2);
     	Main.enemys.add(new Enemy());
         Timer timer = new Timer(1000/60, this);
         timer.start();
@@ -31,16 +30,16 @@ public class Panel extends JPanel implements ActionListener{
     }
 
     public void step(){
-    	if(input.up&&Main.player.y>=0){
+    	if(input.up&&Main.player.getY()>=0){
     		Main.player.y-=3;
     	}
-    	if(input.down&&Main.player.y<=Main.mainFrame.getHeight()-90){
+    	if(input.down&&Main.player.getY()<=Main.mainFrame.getHeight()-90){
     		Main.player.y+=3;
     	}
-    	if(input.left&&Main.player.x>=0){
+    	if(input.left&&Main.player.getX()>=0){
     		Main.player.x-=3;
     	}
-    	if(input.right&&Main.player.x<=200){
+    	if(input.right&&Main.player.getX()<=Main.mainFrame.getWidth()/2-300){
     		Main.player.x+=3;
     	}
     	if(timer==10&&!(Main.enemys.size()>20)){
@@ -59,10 +58,12 @@ public class Panel extends JPanel implements ActionListener{
     
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        //g.drawImage(image, 0, 0, null);
-        Main.player.paintComponent(g);
-        for(int i = 0;i<Main.enemys.size();i++){
-        	Main.enemys.get(i).paintComponent(g);
-        }   
+        if(gameRunning){
+        	Main.background.paintComponent(g);
+        	Main.player.paintComponent(g);
+        	for(int i = 0;i<Main.enemys.size();i++){
+        		Main.enemys.get(i).paintComponent(g);
+        	}
+        }
     }
 }

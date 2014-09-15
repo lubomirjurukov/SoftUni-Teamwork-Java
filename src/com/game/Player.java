@@ -35,13 +35,27 @@ public class Player extends JPanel {
 		g.drawImage(image, x, y, width, height, null);
 	}
 
-	public boolean detectCollision(Enemy enemy) {
+	public boolean detectEnemyCollision(Enemy enemy) {
 		for (int enemyY = 0; enemyY <= enemy.getRandHeight(); enemyY++) {
 			for (int enemyX = 0; enemyX <= enemy.getRandWidth(); enemyX++) {
 				if (((enemy.getX() + enemyX) - (x + width / 2))
 						* ((enemy.getX() + enemyX) - (x + width / 2))
 						+ ((enemy.getY() + enemyY) - (y + height / 2))
 						* ((enemy.getY() + enemyY) - (y + height / 2)) <= (width
+						/ 2 * width / 2)) {
+					collision = true;
+				}
+			}
+		}
+		return collision;
+	}
+	public boolean detectBonusCollision(Bonus bonus) {
+		for (int enemyY = 0; enemyY <= bonus.randSize; enemyY++) {
+			for (int enemyX = 0; enemyX <= bonus.randSize; enemyX++) {
+				if (((bonus.getX() + enemyX) - (x + width / 2))
+						* ((bonus.getX() + enemyX) - (x + width / 2))
+						+ ((bonus.getY() + enemyY) - (y + height / 2))
+						* ((bonus.getY() + enemyY) - (y + height / 2)) <= (width
 						/ 2 * width / 2)) {
 					collision = true;
 				}

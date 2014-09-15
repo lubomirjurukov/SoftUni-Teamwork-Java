@@ -13,6 +13,7 @@ public class Background extends JPanel{
 	private int y1 = 0;
 	private int x2 = 0;
 	private int y2 = 0;
+	private int speed = 5;
 	private boolean init = true;
 	public void init(int w,int h){
 		if(init){
@@ -23,8 +24,8 @@ public class Background extends JPanel{
 		}
 	}
 	public void update(){
-		x1-=1;
-		x2-=1;
+		x1-=speed;
+		x2-=speed;
 		if(Math.abs(x1)>width){
 			x1=0;
 		}

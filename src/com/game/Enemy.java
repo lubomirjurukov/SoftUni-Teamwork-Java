@@ -1,16 +1,18 @@
 package com.game;
 
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.Random;
 
 import javax.swing.JPanel;
 
 public class Enemy extends JPanel {
 	
-
+	private Image image = Toolkit.getDefaultToolkit().createImage("res/enemy.png");
     Random rand = new Random();
-    int randWidth = rand.nextInt(60)+ 10;
-    int randHeight = rand.nextInt(60) + 10;
+    int randWidth = rand.nextInt(60)+ 30;
+    int randHeight = rand.nextInt(60) + 30;
     
     public int getRandHeight() {
     	return this.randHeight;
@@ -51,15 +53,17 @@ public class Enemy extends JPanel {
         	X= Main.mainFrame.getWidth();
             Y = rand.nextInt(Main.mainFrame.getHeight()-20);
               
-             randWidth = rand.nextInt(60) + 10;
-             randHeight = rand.nextInt(60) + 10;
+             randWidth = rand.nextInt(60) + 30;
+             randHeight = rand.nextInt(60) + 30;
 
         }
 
     }
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-        g.fillRect(X, Y, randWidth, randHeight);
+        
+        g.fillOval(X, Y, randWidth, randHeight);
+        g.drawImage(image, X, Y, randWidth, randHeight, null);
 	}
 
 }

@@ -48,7 +48,7 @@ public class Panel extends JPanel implements ActionListener {
 					&& Main.player.getX() <= Main.mainFrame.getWidth() / 2 - 300) {
 				Main.player.x += 3;
 			}
-			if (timer == 10 && !(Main.enemys.size() > 40)) {
+			if (timer == 10 && !(Main.enemys.size() > 5)) {
 				Main.enemys.add(new Enemy());
 				timer = 0;
 			}
@@ -59,6 +59,7 @@ public class Panel extends JPanel implements ActionListener {
 			for (int i = 0; i < Main.enemys.size(); i++) {
 				Main.enemys.get(i).update();
 				if (Main.player.detectEnemyCollision(Main.enemys.get(i))) {
+					Main.player.collision = false;
 					// System.exit(0);
 				}
 
@@ -66,8 +67,8 @@ public class Panel extends JPanel implements ActionListener {
 			for (int i = 0; i < Main.bonus.size(); i++) {
 				Main.bonus.get(i).update();
 				if (Main.player.detectBonusCollision(Main.bonus.get(i))) {
-					Main.bonus.get(i).getBonus();// input, Main.enemys.get(k));
-					Main.bonus.remove(Main.toRemove);
+					Main.bonus.get(i).getBonus(input);// input, Main.enemys.get(k));
+					Main.bonus.remove(i);
 					Main.player.collision = false;
 				}
 			}

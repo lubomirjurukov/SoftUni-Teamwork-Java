@@ -14,6 +14,7 @@ public class Player extends JPanel {
 	int width = 50;
 	int height = 50;
 	boolean collision = false;
+	boolean bonuscollision = false;
 
 	public int getX() {
 		return this.x;
@@ -54,10 +55,10 @@ public class Player extends JPanel {
 	public boolean detectBonusCollision(Bonus bonus) {
 		for (int bonusY = 0; bonusY <= bonus.randSize; bonusY++) {
 			for (int bonusX = 0; bonusX <= bonus.randSize; bonusX++) {
-				if (((bonus.getX() + bonusX) - (x + width / 2))
-						* ((bonus.getX() + bonusX) - (x + width / 2))
-						+ ((bonus.getY() + bonusY) - (y + height / 2))
-						* ((bonus.getY() + bonusY) - (y + height / 2)) <= (width
+				if (((bonus.x + bonusX) - (x + width / 2))
+						* ((bonus.x + bonusX) - (x + width / 2))
+						+ ((bonus.y + bonusY) - (y + height / 2))
+						* ((bonus.y + bonusY) - (y + height / 2)) <= (width
 						/ 2 * width / 2)) {
 					collision = true;
 				}

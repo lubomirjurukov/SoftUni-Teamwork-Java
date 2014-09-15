@@ -13,28 +13,28 @@ public class Bonus extends JPanel {
 	private int randBonus = rand.nextInt(6);
 
 	public int getXcoor() {
-		return X_COOR;
+		return x;
 	}
 
-	public void setX(int x) {
-		X_COOR = x;
+	public void setX(int X) {
+		x = X;
 	}
 
 	public int getY() {
-		return Y_COOR;
+		return y;
 	}
 
-	private int X_COOR = Main.mainFrame.getWidth();
-	private int Y_COOR = rand.nextInt(Main.mainFrame.getHeight() - 20);
+	public int x = Main.mainFrame.getWidth();
+	public int y = rand.nextInt(Main.mainFrame.getHeight() - 20);
 
 	public void update() {
-		X_COOR -= Main.speed;
+		x -= Main.speed;
 		// Main.bonus.remove(this);
-		if (X_COOR <= 0) {
-			Y_COOR = rand.nextInt(Main.mainFrame.getHeight() - 20);
+		if (x <= 0) {
+			y = rand.nextInt(Main.mainFrame.getHeight() - 20);
 			// Main.toRemove.add(this);
-			X_COOR = Main.mainFrame.getWidth();
-			Y_COOR = rand.nextInt(Main.mainFrame.getHeight() - 20);
+			x = Main.mainFrame.getWidth();
+			y = rand.nextInt(Main.mainFrame.getHeight() - 20);
 		}
 
 	}
@@ -42,42 +42,36 @@ public class Bonus extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.setColor(Color.RED);
-		g.fillOval(X_COOR, Y_COOR, randSize, randSize);
+		g.fillOval(x, y, randSize, randSize);
 	}
 
-	public void getBonus() {// Input input, Enemy enemy) {
-		System.out.println("test");
+	public void getBonus(Input input) {
 		int changeEnemySpeed = 10 + rand.nextInt(10);
-		// switch (randBonus) {
-		// case 1:
-		// System.out.println("Size changed!");
-		// Main.player.height = Main.player.height + randSize;
-		// Main.player.width = Main.player.width + randSize;
-		// break;
-		// case 2:
-		// System.out.println("Faster enemies!");
-		// Main.speed -= changeEnemySpeed;
-		// break;
-		// case 3:
-		// Main.player.height -= randSize;
-		// Main.player.width -= randSize;
-		// break;
-		// case 4:
-		// Main.speed += changeEnemySpeed;
-		// break;
-		// case 5:
-		// boolean keepController = input.up;
-		// input.up = input.down;
-		// input.down = keepController;
-		// keepController = input.left;
-		// input.left = input.right;
-		// input.right = keepController;
-		// break;
-		//
-		// default:
-		// enemy.X = 0;
-		// break;
-		// }
-		Main.toRemove.add(this);
+		switch (randBonus) {
+		case 1:
+			System.out.println("Size changed!");
+			Main.player.height = Main.player.height + randSize;
+			Main.player.width = Main.player.width + randSize;
+			break;
+		case 2:
+			System.out.println("Faster enemies!");
+			Main.speed -= changeEnemySpeed;
+			break;
+		case 3:
+			Main.player.height -= randSize;
+			Main.player.width -= randSize;
+			break;
+		case 4:
+			Main.speed += changeEnemySpeed;
+			break;
+		case 5:
+			boolean keepController = input.up;
+			input.up = input.down;
+			input.down = keepController;
+			keepController = input.left;
+			input.left = input.right;
+			input.right = keepController;
+			break;
+		}
 	}
 }

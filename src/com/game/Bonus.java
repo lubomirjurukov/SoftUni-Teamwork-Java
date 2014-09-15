@@ -10,6 +10,7 @@ public class Bonus extends JPanel {
 
 	private Random rand = new Random();
 	int randSize = rand.nextInt(30);
+	int randPlayerSize = 25 + rand.nextInt(50);
 	private int randBonus = rand.nextInt(6);
 
 	public int getXcoor() {
@@ -27,14 +28,10 @@ public class Bonus extends JPanel {
 	public int x = Main.mainFrame.getWidth();
 	public int y = rand.nextInt(Main.mainFrame.getHeight() - 20);
 
-	public void update() {
+	public void update(int index) {
 		x -= Main.speed;
-		// Main.bonus.remove(this);
 		if (x <= 0) {
-			y = rand.nextInt(Main.mainFrame.getHeight() - 20);
-			// Main.toRemove.add(this);
-			x = Main.mainFrame.getWidth();
-			y = rand.nextInt(Main.mainFrame.getHeight() - 20);
+			Main.bonus.remove(index);
 		}
 
 	}
@@ -46,23 +43,22 @@ public class Bonus extends JPanel {
 	}
 
 	public void getBonus(Input input) {
-		int changeEnemySpeed = 10 + rand.nextInt(10);
 		switch (randBonus) {
 		case 1:
 			System.out.println("Size changed!");
-			Main.player.height = Main.player.height + randSize;
-			Main.player.width = Main.player.width + randSize;
+			Main.player.height = randPlayerSize;
+			Main.player.width = randPlayerSize;
 			break;
 		case 2:
 			System.out.println("Faster enemies!");
-			Main.speed -= changeEnemySpeed;
+			Main.speed = 6 + rand.nextInt(5);
 			break;
 		case 3:
 			Main.player.height -= randSize;
 			Main.player.width -= randSize;
 			break;
 		case 4:
-			Main.speed += changeEnemySpeed;
+			Main.speed = 1 + rand.nextInt(4);
 			break;
 		case 5:
 			boolean keepController = input.up;

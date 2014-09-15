@@ -15,6 +15,10 @@ public class Enemy extends JPanel {
     	return this.randHeight;
     }
     
+    public int getRandWidth() {
+    	return this.randWidth;
+    }
+    
     public int getX() {
         return this.X;
     }

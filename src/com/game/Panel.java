@@ -34,7 +34,7 @@ public class Panel extends JPanel implements ActionListener{
     	if(input.up&&Main.player.y>=0){
     		Main.player.y-=3;
     	}
-    	if(input.down&&Main.player.y<=Main.mainFrame.getHeight()-50){
+    	if(input.down&&Main.player.y<=Main.mainFrame.getHeight()-90){
     		Main.player.y+=3;
     	}
     	if(input.left&&Main.player.x>=0){
@@ -51,7 +51,6 @@ public class Panel extends JPanel implements ActionListener{
         	if(Main.player.detectCollision(Main.enemys.get(i))){
         		System.exit(0);
         	}
-       	
         	Main.enemys.get(i).update();
         } 
     	timer++;

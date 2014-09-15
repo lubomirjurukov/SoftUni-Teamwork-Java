@@ -12,6 +12,7 @@ public class Player extends JPanel {
 	int y = 0;
 	int width = 50;
 	int height = 50;
+	boolean collision = false;
 
 	public int getX() {
 		return this.x;
@@ -35,7 +36,17 @@ public class Player extends JPanel {
 	}
 
 	public boolean detectCollision(Enemy enemy) {
-		return (enemy.getX() - (x+width/2)) * (enemy.getX() - (x+width/2)) + (enemy.getY() - (y+height/2))
-				* (enemy.getY() - (y+height/2)) <= (width/2 * width/2);
+		for (int enemyY = 0; enemyY <= enemy.getRandHeight(); enemyY++) {
+			for (int enemyX = 0; enemyX <= enemy.getRandWidth(); enemyX++) {
+				if (((enemy.getX() + enemyX) - (x + width / 2))
+						* ((enemy.getX() + enemyX) - (x + width / 2))
+						+ ((enemy.getY() + enemyY) - (y + height / 2))
+						* ((enemy.getY() + enemyY) - (y + height / 2)) <= (width
+						/ 2 * width / 2)) {
+					collision = true;
+				}
+			}
+		}
+		return collision;
 	}
 }

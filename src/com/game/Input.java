@@ -9,6 +9,7 @@ public class Input implements KeyListener {
 	public boolean down = false;
 	public boolean left = false;
 	public boolean right = false;
+	public boolean enter = false;
 
 	public void keyTyped(KeyEvent e) {
 	}
@@ -35,6 +36,9 @@ public class Input implements KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
 			System.exit(0);
 		}
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			enter=true;
+		}
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -50,6 +54,9 @@ public class Input implements KeyListener {
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			left = false;
 
+		}
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+			enter=false;
 		}
 	}
 }

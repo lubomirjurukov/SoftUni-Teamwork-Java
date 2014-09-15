@@ -9,15 +9,17 @@ public class Main{
 	public static Background background = new Background();
 	public static JFrame mainFrame = new JFrame("");
 	public static List<Enemy> enemys = new ArrayList<Enemy>();
+	public static Panel panel = new Panel();
+	public static Menu menu =new Menu();
 	private static boolean init = false;
 	public static void main(String[] args) {
 		mainFrame.setSize(1280, 720);
     	mainFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
     	mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    	Panel panel = new Panel();
     	mainFrame.add(panel);
     	mainFrame.setVisible(true);
     	if(!init){
+    		menu.init(mainFrame.getWidth()/2-50, mainFrame.getHeight()/2, mainFrame.getHeight()/2+60);
     		player.setY(mainFrame.getHeight()/2);
     		background.init(mainFrame.getWidth(), mainFrame.getHeight());
     		init = true;

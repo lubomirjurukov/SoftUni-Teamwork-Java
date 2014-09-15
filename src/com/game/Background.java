@@ -13,9 +13,24 @@ public class Background extends JPanel{
 	private int y1 = 0;
 	private int x2 = 0;
 	private int y2 = 0;
-	public void update(int w,int h){
+	private boolean init = true;
+	public void init(int w,int h){
+		if(init){
 		this.width = w;
 		this.height = h;
+		this.x2 = w;
+		init = false;
+		}
+	}
+	public void update(){
+		x1-=1;
+		x2-=1;
+		if(Math.abs(x1)>width){
+			x1=0;
+		}
+		if(x2<=0){
+			x2=width;
+		}
 	}
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);

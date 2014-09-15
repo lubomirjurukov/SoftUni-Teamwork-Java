@@ -51,7 +51,8 @@ public class Panel extends JPanel implements ActionListener{
         		System.exit(0);
         	}
         	Main.enemys.get(i).update();
-        } 
+        }
+        Main.background.update();
     	timer++;
         repaint();
     }

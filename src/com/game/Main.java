@@ -19,7 +19,7 @@ public class Main{
     	mainFrame.setVisible(true);
     	if(!init){
     		player.setY(mainFrame.getHeight()/2);
-    		background.update(mainFrame.getWidth(), mainFrame.getHeight());
+    		background.init(mainFrame.getWidth(), mainFrame.getHeight());
     		init = true;
     	}
 	}

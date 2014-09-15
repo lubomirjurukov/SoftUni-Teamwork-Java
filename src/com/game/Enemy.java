@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.swing.JPanel;
 
 public class Enemy extends JPanel {
+	
 
     Random rand = new Random();
     int randWidth = rand.nextInt(60);
@@ -33,14 +34,26 @@ public class Enemy extends JPanel {
 
     public int X= Main.mainFrame.getWidth();
     public int Y = rand.nextInt(Main.mainFrame.getHeight()-20);
+
+    public void generate(Enemy enemy) {
+		
+		if(enemy.Y!=(Y) && enemy.X == Main.mainFrame.getWidth()){
+			while(enemy.Y==(Y)){
+			Y = rand.nextInt(Main.mainFrame.getHeight()-20);
+			}
+    	}
+	}
+    
     public void update(){
         this.X -= 5;
-
         if(X <= 0) {
-             X= Main.mainFrame.getWidth();
-             Y = rand.nextInt(Main.mainFrame.getHeight()-20);
-            randWidth = rand.nextInt(160);
-            randHeight = rand.nextInt(160);
+           
+        	int X= Main.mainFrame.getWidth();
+            int Y = rand.nextInt(Main.mainFrame.getHeight()-20);
+           
+           
+             randWidth = rand.nextInt(160);
+             randHeight = rand.nextInt(160);
 
         }
 

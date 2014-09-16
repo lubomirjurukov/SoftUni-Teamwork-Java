@@ -132,7 +132,7 @@ public class Panel extends JPanel implements ActionListener {
 			g.drawImage(Main.background.gameOver, Main.mainFrame.getWidth()/2-200, 
 					Main.mainFrame.getHeight()/2-200, 400, 400, null);
 			g.drawString("Score: " + String.valueOf(Main.score),Main.mainFrame.getWidth()/2 - 200, Main.mainFrame.getHeight()/2 + 250);
-			if(gameOverTimer == 100){
+			if(gameOverTimer >= 100){
 				soundOfDeath.stop();
 				Main.sound.loop();
 				Main.score = 0;
@@ -146,6 +146,7 @@ public class Panel extends JPanel implements ActionListener {
 				Main.background.paintComponent(g);
 				Main.menu.paintComponent(g);
 				deathScreen = false;
+				gameOverTimer = 0;
 			}
 		}
 		//Draw the Game

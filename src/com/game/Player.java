@@ -17,7 +17,7 @@ public class Player extends JPanel {
 	int width = 50;
 	int height = 50;
 	boolean collision = false;
-	boolean bonuscollision = false;
+	boolean collisionBonus = false;
 	private  List<Projectile> projectiles = new ArrayList<Projectile>();
 	private int timer = 50;
 
@@ -101,10 +101,10 @@ public class Player extends JPanel {
 						+ ((bonus.y + bonusY) - (y + height / 2))
 						* ((bonus.y + bonusY) - (y + height / 2)) <= (width
 						/ 2 * width / 2)) {
-					collision = true;
+					collisionBonus = true;
 				}
 			}
 		}
-		return collision;
+		return collisionBonus;
 	}
 }

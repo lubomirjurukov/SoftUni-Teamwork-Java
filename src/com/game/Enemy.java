@@ -51,7 +51,12 @@ public class Enemy extends JPanel {
 	}
 
 	public void update() {
-		this.X -= Main.speed;
+		if(Main.speed==0){
+			this.X = Main.speed;
+		}
+		if(Main.speed!=0){
+			this.X -= Main.speed;
+		}
 		if (X <= 0) {
 			X = Main.mainFrame.getWidth();
 			Y = rand.nextInt(Main.mainFrame.getHeight() - 20);

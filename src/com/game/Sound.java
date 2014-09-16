@@ -19,7 +19,6 @@ public class Sound {
 			File file = new File(fileName);
 			if (file.exists()) {
 				AudioInputStream sound = AudioSystem.getAudioInputStream(file);
-				// load the sound into memory (a Clip)
 				clip = AudioSystem.getClip();
 				clip.open(sound);
 			} else {
@@ -39,12 +38,10 @@ public class Sound {
 			throw new RuntimeException(
 					"Sound: Line Unavailable Exception Error: " + e);
 		}
-
-		// play, stop, loop the sound clip
 	}
 
 	public void play() {
-		clip.setFramePosition(0); // Must always rewind!
+		clip.setFramePosition(0);
 		clip.start();
 	}
 

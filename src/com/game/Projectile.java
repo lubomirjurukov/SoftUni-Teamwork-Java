@@ -17,7 +17,7 @@ public class Projectile extends JPanel{
 			"res/iceshard.png");
 	
 	public void update(int index) {
-		x += 3;
+		x += 7;
 		for (int i = 0; i < Main.enemys.size(); i++) {
 			if(enemyCollision(Main.enemys.get(i))){
 				Main.enemys.remove(i);

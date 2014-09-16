@@ -65,6 +65,9 @@ public class Panel extends JPanel implements ActionListener {
 			}
 			for (int i = 0; i < Main.bonus.size(); i++) {
 				Main.bonus.get(i).update(i);
+				if(Main.bonus.get(i).x<=0){
+					Main.bonus.remove(i);
+				}
 				if (Main.player.detectBonusCollision(Main.bonus.get(i))) {
 					Main.bonus.get(i).getBonus(input);// input, Main.enemys.get(k));
 					Main.bonus.remove(i);

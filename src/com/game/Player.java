@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 public class Player extends JPanel {
 	private Image image = Toolkit.getDefaultToolkit().createImage(
 			"res/penguin.gif");
+	private static Sound sound = new Sound("res/LaserShoot.wav");
 	int x = 0;
 	int y = 0;
 	int width = 50;
@@ -59,6 +60,7 @@ public class Player extends JPanel {
 			x += 3;
 		}
 		if(input.space&&timer==50){
+			sound.play();
 			timer=0;
 			Projectile tempProjectile = new Projectile();
 			tempProjectile.x=x;
@@ -92,8 +94,8 @@ public class Player extends JPanel {
 	}
 
 	public boolean detectBonusCollision(Bonus bonus) {
-		for (int bonusY = 0; bonusY <= bonus.randSize; bonusY++) {
-			for (int bonusX = 0; bonusX <= bonus.randSize; bonusX++) {
+		for (int bonusY = 0; bonusY <= bonus.size; bonusY++) {
+			for (int bonusX = 0; bonusX <= bonus.size; bonusX++) {
 				if (((bonus.x + bonusX) - (x + width / 2))
 						* ((bonus.x + bonusX) - (x + width / 2))
 						+ ((bonus.y + bonusY) - (y + height / 2))

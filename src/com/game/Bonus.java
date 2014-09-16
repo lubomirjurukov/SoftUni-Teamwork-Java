@@ -1,7 +1,8 @@
 package com.game;
 
-import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.*;
 
 import javax.swing.*;
@@ -9,8 +10,11 @@ import javax.swing.*;
 public class Bonus extends JPanel {
 
 	private Random rand = new Random();
-	int randSize = rand.nextInt(30);
-	int randPlayerSize = 25 + rand.nextInt(50);
+	private Image image = Toolkit.getDefaultToolkit().createImage(
+			"res/bonus.png");
+	int size = 30;
+	int randSize = 25+rand.nextInt(30);
+	int randPlayerSize = 60;
 	private int randBonus = rand.nextInt(6);
 
 	public int getXcoor() {
@@ -37,8 +41,7 @@ public class Bonus extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(Color.RED);
-		g.fillOval(x, y, randSize, randSize);
+		g.drawImage(image, x, y, size, size, null);
 	}
 
 	public void getBonus(Input input) {

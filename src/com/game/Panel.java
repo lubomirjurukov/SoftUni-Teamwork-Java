@@ -111,6 +111,7 @@ public class Panel extends JPanel implements ActionListener {
 		}
 		if (deathScreen) {
 			gameOverTimer++;
+			Main.bonus.removeAll(Main.bonus);
 			Main.sound.stop();
 			soundOfDeath.play();
 		}

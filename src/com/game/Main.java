@@ -12,7 +12,7 @@ public class Main {
 	public static Player player = new Player();
 	public static int speed = 5;
 	public static Background background = new Background();
-	public static JFrame mainFrame = new JFrame("");
+	public static JFrame mainFrame = new JFrame("Save the penguin");
 	public static List<Enemy> enemys = new ArrayList<Enemy>();
 	public static List<Bonus> bonus = new ArrayList<Bonus>();
 	public static Panel panel = new Panel();

@@ -14,6 +14,7 @@ public class Main {
 	public static List<Bonus> bonus = new ArrayList<Bonus>();
 	public static Panel panel = new Panel();
 	public static Menu menu = new Menu();
+	private static Sound sound = new Sound("res/sound");
 	private static boolean init = false;
 
 	public static void main(String[] args) {
@@ -22,6 +23,7 @@ public class Main {
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.add(panel);
 		mainFrame.setVisible(true);
+		sound.loop();
 		if (!init) {
 			menu.init(mainFrame.getWidth() / 2 - 50, mainFrame.getHeight() / 2,
 					mainFrame.getHeight() / 2 + 60);

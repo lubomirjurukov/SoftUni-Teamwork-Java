@@ -1,5 +1,6 @@
 package com.game;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Main {
 	public static Menu menu = new Menu();
 	private static Sound sound = new Sound("res/sound.wav");
 	private static boolean init = false;
+	public static File save = new File("res/save.txt");
 	public static long score = 0;
 
 	public static void main(String[] args) {

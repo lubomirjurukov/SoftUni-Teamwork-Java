@@ -22,7 +22,7 @@ public class Projectile extends JPanel{
 			if(enemyCollision(Main.enemys.get(i))){
 				Main.enemys.remove(i);
 				collision = false;
-				Main.score += 10;
+				Main.score += 20;
 				disableCollision();
 			}
 		}

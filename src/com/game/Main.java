@@ -1,5 +1,7 @@
 package com.game;
 
+import java.awt.Point;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ public class Main {
 		mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		mainFrame.add(panel);
 		mainFrame.setVisible(true);
+		mainFrame.setCursor(mainFrame.getToolkit().createCustomCursor( new BufferedImage( 1, 1, BufferedImage.TYPE_INT_ARGB ), new Point(), null ));
 		sound.loop();
 		if (!init) {
 			menu.init(mainFrame.getWidth() / 2 - 50, mainFrame.getHeight() / 2,

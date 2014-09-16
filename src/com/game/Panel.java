@@ -37,20 +37,6 @@ public class Panel extends JPanel implements ActionListener {
 
 	public void step() {
 		if (gameRunning) {
-			if (input.up && Main.player.getY() >= 0) {
-				Main.player.y -= 3;
-			}
-			if (input.down
-					&& Main.player.getY() <= Main.mainFrame.getHeight() - 90) {
-				Main.player.y += 3;
-			}
-			if (input.left && Main.player.getX() >= 0) {
-				Main.player.x -= 3;
-			}
-			if (input.right
-					&& Main.player.getX() <= Main.mainFrame.getWidth() / 2 - 300) {
-				Main.player.x += 3;
-			}
 			Main.player.update(input);
 			if (timer == 10 && !(Main.enemys.size() > 40)) {
 				Main.enemys.add(new Enemy());

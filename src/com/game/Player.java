@@ -44,6 +44,20 @@ public class Player extends JPanel {
 		}
 	}
 	public void update(Input input){
+		if (input.up && getY() >= 0) {
+			y -= 3;
+		}
+		if (input.down
+				&& getY() <= Main.mainFrame.getHeight() - 90) {
+			y += 3;
+		}
+		if (input.left && getX() >= 0) {
+			x -= 3;
+		}
+		if (input.right
+				&& getX() <= Main.mainFrame.getWidth() / 2 - 300) {
+			x += 3;
+		}
 		if(input.space&&timer==100){
 			timer=0;
 			Projectile tempProjectile = new Projectile();

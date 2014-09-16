@@ -1,9 +1,12 @@
 package com.game;
 
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+import java.util.ArrayList;
+import java.awt.Color;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -13,17 +16,17 @@ public class Panel extends JPanel implements ActionListener {
 	private Input input = new Input();
 	private boolean gameRunning = false;
 	private int bonus = 100;
-	private int bonusTime=0;
-
+	private int bonusTime = 0;
+	public boolean deathScreen = false;
+	long gameOverTimer = 0;
+	
 	public void setGameRunning(boolean gameRunning) {
 		this.gameRunning = gameRunning;
 	}
 
 	private int timer = 0;
 
-	// construct a Panel
 	public Panel() {
-		// setBackground(Color.BLACK);
 		Main.enemys.add(new Enemy());
 		Timer timer = new Timer(1000 / 60, this);
 		timer.start();
@@ -45,8 +48,7 @@ public class Panel extends JPanel implements ActionListener {
 			for (int i = 0; i < Main.enemys.size(); i++) {
 				Main.enemys.get(i).update();
 				if (Main.player.detectEnemyCollision(Main.enemys.get(i))) {
-					Main.player.collision = false;
-					// System.exit(0);
+					deathScreen = true;
 				}
 			}
 			for (int i = 0; i < Main.bonus.size(); i++) {
@@ -55,10 +57,10 @@ public class Panel extends JPanel implements ActionListener {
 					Main.bonus.remove(i);
 				}
 				if (Main.player.detectBonusCollision(Main.bonus.get(i))) {
-					Main.bonus.get(i).getBonus(input);// input, Main.enemys.get(k));
+					Main.bonus.get(i).getBonus(input);
 					Main.bonus.remove(i);
 					bonusTime = 100;
-					Main.player.collision = false;
+					Main.player.collisionBonus = false;
 				}
 			}
 			if(bonusTime!=0){
@@ -84,18 +86,39 @@ public class Panel extends JPanel implements ActionListener {
 		if (!gameRunning) {
 			Main.menu.setInput(input.up, input.down, input.enter);
 		}
+		if (deathScreen){
+			gameOverTimer++;
+		}
 		repaint();
 	}
-
+	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if (!gameRunning) {
+		if (!gameRunning && !deathScreen) {
 			Main.background.paintComponent(g);
 			Main.menu.paintComponent(g);
 		}
-		if (gameRunning) {
+		if(gameRunning && deathScreen){
+			g.drawImage(Main.background.gameOver, Main.mainFrame.getWidth()/2-200, 
+					Main.mainFrame.getHeight()/2-200, 400, 400, null);
+			if(gameOverTimer == 100){
+				Main.score = 0;
+				gameRunning = false;
+				Main.player = new Player();
+				Main.player.setY(Main.mainFrame.getHeight() / 2); 
+				Main.enemys = new ArrayList<Enemy>();
+				Main.bonus = new ArrayList<Bonus>();
+				Main.background.paintComponent(g);
+				Main.menu.paintComponent(g);
+				deathScreen = false;
+			}
+		}
+		if(gameRunning && !deathScreen) {
 			Main.background.paintComponent(g);
 			Main.player.paintComponent(g);
+			g.setColor(Color.red);
+			g.setFont(new Font("TimesRoman", Font.PLAIN,20));
+			g.drawString(String.valueOf(Main.score),10,30);
 			for (int i = 0; i < Main.enemys.size(); i++) {
 				Main.enemys.get(i).paintComponent(g);
 			}

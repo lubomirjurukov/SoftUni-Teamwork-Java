@@ -3,6 +3,8 @@ package com.game;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.JPanel;
 
 public class Background extends JPanel {
@@ -10,13 +12,15 @@ public class Background extends JPanel {
 	private int height = 0;
 	private Image image = Toolkit.getDefaultToolkit().createImage(
 			"res/background.png");
+	public Image gameOver = Toolkit.getDefaultToolkit().createImage(
+			"res/gameover.png");
 	private int x1 = 0;
 	private int y1 = 0;
 	private int x2 = 0;
 	private int y2 = 0;
-	private int speed = 5;
+	private int speed = Main.speed;
 	private boolean init = true;
-
+	private TimeUnit unit;
 	public void init(int w, int h) {
 		if (init) {
 			this.width = w;
@@ -27,13 +31,19 @@ public class Background extends JPanel {
 	}
 
 	public void update() {
-		x1 -= Main.speed;
-		x2 -= Main.speed;
-		if (Math.abs(x1) >= width) {
-			x1 = width;
+		if(Main.speed == 0){
+			x1 = 0;
+			x2 = 0;
 		}
-		if (Math.abs(x2) >= width) {
-			x2 = width;
+		else {
+			x1 -= Main.speed;
+			x2 -= Main.speed;
+			if (Math.abs(x1) >= width) {
+				x1 = width;
+			}
+			if (Math.abs(x2) >= width) {
+				x2 = width;
+			}
 		}
 	}
 

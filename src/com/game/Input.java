@@ -39,7 +39,7 @@ public class Input implements KeyListener {
 		}
 
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-			//System.exit(0);
+			System.exit(0);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			enter = true;

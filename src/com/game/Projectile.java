@@ -10,26 +10,32 @@ public class Projectile extends JPanel{
 	public int y = 0;
 	public int size = 30;
 	boolean collision = false;
+	boolean disebled =false;
 	
-	public void update() {
+	public void update(int index) {
 		x += 3;
 		for (int i = 0; i < Main.enemys.size(); i++) {
 			if(enemyCollision(Main.enemys.get(i))){
 				Main.enemys.remove(i);
-				Main.player.toRemove = i;
 				collision = false;
+				disableCollision();
 			}
 		}
 	}
+	private void disableCollision(){
+		disebled=true;
+	}
 	private boolean enemyCollision(Enemy enemy){
-		for (int enemyY = 0; enemyY <= enemy.getRandHeight(); enemyY++) {
-			for (int enemyX = 0; enemyX <= enemy.getRandWidth(); enemyX++) {
-				if (((enemy.getX() + enemyX) - (x + size / 2))
-						* ((enemy.getX() + enemyX) - (x + size / 2))
-						+ ((enemy.getY() + enemyY) - (y + size / 2))
-						* ((enemy.getY() + enemyY) - (y + size / 2)) <= (size
-						/ 2 * size / 2)) {
-					collision = true;
+		if(!disebled){
+			for (int enemyY = 0; enemyY <= enemy.getRandHeight(); enemyY++) {
+				for (int enemyX = 0; enemyX <= enemy.getRandWidth(); enemyX++) {
+					if (((enemy.getX() + enemyX) - (x + size / 2))
+							* ((enemy.getX() + enemyX) - (x + size / 2))
+							+ ((enemy.getY() + enemyY) - (y + size / 2))
+							* ((enemy.getY() + enemyY) - (y + size / 2)) <= (size
+							/ 2 * size / 2)) {
+						collision = true;
+					}
 				}
 			}
 		}
@@ -37,8 +43,10 @@ public class Projectile extends JPanel{
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.setColor(Color.RED);
-		g.fillOval(x, y, size, size);
+		if(!disebled){
+			g.setColor(Color.RED);
+			g.fillOval(x, y, size, size);
+		}
 	}
 
 }

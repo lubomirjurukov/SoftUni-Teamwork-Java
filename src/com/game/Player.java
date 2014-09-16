@@ -15,10 +15,10 @@ public class Player extends JPanel {
 	int y = 0;
 	int width = 50;
 	int height = 50;
-	int toRemove = -1;
 	boolean collision = false;
 	boolean bonuscollision = false;
 	private  List<Projectile> projectiles = new ArrayList<Projectile>();
+	private int timer = 100;
 
 	public int getX() {
 		return this.x;
@@ -44,20 +44,21 @@ public class Player extends JPanel {
 		}
 	}
 	public void update(Input input){
-		if(input.space){
+		if(input.space&&timer==100){
+			timer=0;
 			Projectile tempProjectile = new Projectile();
 			tempProjectile.x=x;
 			tempProjectile.y=y;
 			projectiles.add(tempProjectile);
 		}
 		for (int i = 0; i < projectiles.size(); i++) {
-			projectiles.get(i).update();
-			//if(toRemove != -1){
-			//	projectiles.remove(toRemove);
-			//}
+			projectiles.get(i).update(i);
 			if(projectiles.get(i).x>=Main.mainFrame.getWidth()){
 				projectiles.remove(i);
 			}
+		}
+		if(timer!=100){
+			timer++;
 		}
 	}
 

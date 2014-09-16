@@ -9,7 +9,7 @@ public class Background extends JPanel {
 	private int width = 0;
 	private int height = 0;
 	private Image image = Toolkit.getDefaultToolkit().createImage(
-			"res/test.jpg");
+			"res/background.png");
 	private int x1 = 0;
 	private int y1 = 0;
 	private int x2 = 0;

@@ -52,7 +52,7 @@ public class Panel extends JPanel implements ActionListener {
 				Main.player.x += 3;
 			}
 			Main.player.update(input);
-			if (timer == 10 && !(Main.enemys.size() > 5)) {
+			if (timer == 10 && !(Main.enemys.size() > 40)) {
 				Main.enemys.add(new Enemy());
 				timer = 0;
 			}
@@ -91,7 +91,9 @@ public class Panel extends JPanel implements ActionListener {
 				bonus = 100+rand.nextInt(100);
 			}
 			Main.background.update();
-			timer++;
+			if (timer != 10) {
+				timer++;
+			}
 		}
 		if (!gameRunning) {
 			Main.menu.setInput(input.up, input.down, input.enter);

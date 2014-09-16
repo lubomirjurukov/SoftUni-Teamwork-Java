@@ -15,6 +15,7 @@ public class Player extends JPanel {
 	int y = 0;
 	int width = 50;
 	int height = 50;
+	int toRemove = -1;
 	boolean collision = false;
 	boolean bonuscollision = false;
 	private  List<Projectile> projectiles = new ArrayList<Projectile>();
@@ -51,6 +52,9 @@ public class Player extends JPanel {
 		}
 		for (int i = 0; i < projectiles.size(); i++) {
 			projectiles.get(i).update();
+			//if(toRemove != -1){
+			//	projectiles.remove(toRemove);
+			//}
 			if(projectiles.get(i).x>=Main.mainFrame.getWidth()){
 				projectiles.remove(i);
 			}

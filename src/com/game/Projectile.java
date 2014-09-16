@@ -16,6 +16,7 @@ public class Projectile extends JPanel{
 		for (int i = 0; i < Main.enemys.size(); i++) {
 			if(enemyCollision(Main.enemys.get(i))){
 				Main.enemys.remove(i);
+				Main.player.toRemove = i;
 				collision = false;
 			}
 		}

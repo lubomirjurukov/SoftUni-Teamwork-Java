@@ -90,7 +90,6 @@ public class Panel extends JPanel implements ActionListener {
 				Main.bonus.add(new Bonus());
 				bonus = 100+rand.nextInt(100);
 			}
-			System.out.println(Main.bonus.size());
 			Main.background.update();
 			timer++;
 		}

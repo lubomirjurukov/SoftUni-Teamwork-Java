@@ -12,7 +12,7 @@ public class Projectile extends JPanel{
 	public int y = 0;
 	public int size = 30;
 	boolean collision = false;
-	boolean disebled =false;
+	boolean disabled =false;
 	private Image image = Toolkit.getDefaultToolkit().createImage(
 			"res/iceshard.png");
 	
@@ -28,10 +28,10 @@ public class Projectile extends JPanel{
 		}
 	}
 	private void disableCollision(){
-		disebled=true;
+		disabled=true;
 	}
 	private boolean enemyCollision(Enemy enemy){
-		if(!disebled){
+		if(!disabled){
 			for (int enemyY = 0; enemyY <= enemy.getRandHeight(); enemyY++) {
 				for (int enemyX = 0; enemyX <= enemy.getRandWidth(); enemyX++) {
 					if (((enemy.getX() + enemyX) - (x + size / 2))
@@ -48,7 +48,7 @@ public class Projectile extends JPanel{
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		if(!disebled){
+		if(!disabled){
 			g.drawImage(image, x, y, size, size, null);
 		}
 	}

@@ -1,15 +1,16 @@
 package com.game;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
-import java.util.ArrayList;
-import java.awt.Color;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Scanner;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -22,6 +23,7 @@ public class Panel extends JPanel implements ActionListener {
 	private int bonusTime = 0;
 	public boolean deathScreen = false;
 	long gameOverTimer = 0;
+	long tempScore = 0;
 	
 	public void setGameRunning(boolean gameRunning) {
 		this.gameRunning = gameRunning;
@@ -52,12 +54,22 @@ public class Panel extends JPanel implements ActionListener {
 				Main.enemys.get(i).update();
 				if (Main.player.detectEnemyCollision(Main.enemys.get(i))) {
 					deathScreen = true;
+					Scanner sc;
 					try {
-						PrintWriter pw = new PrintWriter(Main.save);
-						pw.println(String.valueOf(Main.score));
-						pw.close();
+						sc = new Scanner(Main.save);
+						tempScore = sc.nextLong();
+						sc.close();
 					} catch (FileNotFoundException e) {
 						e.printStackTrace();
+					}
+					if (Main.score > tempScore) {
+						try {
+							PrintWriter pw = new PrintWriter(Main.save);
+							pw.println(String.valueOf(Main.score));
+							pw.close();
+						} catch (FileNotFoundException e) {
+							e.printStackTrace();
+						}
 					}
 				}
 			}

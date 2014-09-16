@@ -18,7 +18,7 @@ public class Main {
 	public static Sound sound = new Sound("res/sound.wav");
 	public static File save = new File("res/save.txt");
 	private static boolean init = false;
-	public static File save = new File("res/save.txt");
+
 	public static long score = 0;
 
 	public static void main(String[] args) {

@@ -1,6 +1,5 @@
 package com.game;
 
-//import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,6 +51,7 @@ public class Panel extends JPanel implements ActionListener {
 					&& Main.player.getX() <= Main.mainFrame.getWidth() / 2 - 300) {
 				Main.player.x += 3;
 			}
+			Main.player.update(input);
 			if (timer == 10 && !(Main.enemys.size() > 5)) {
 				Main.enemys.add(new Enemy());
 				timer = 0;
@@ -64,7 +64,7 @@ public class Panel extends JPanel implements ActionListener {
 				}
 			}
 			for (int i = 0; i < Main.bonus.size(); i++) {
-				Main.bonus.get(i).update(i);
+				Main.bonus.get(i).update();
 				if(Main.bonus.get(i).x<=0){
 					Main.bonus.remove(i);
 				}
@@ -90,6 +90,7 @@ public class Panel extends JPanel implements ActionListener {
 				Main.bonus.add(new Bonus());
 				bonus = 100+rand.nextInt(100);
 			}
+			System.out.println(Main.bonus.size());
 			Main.background.update();
 			timer++;
 		}

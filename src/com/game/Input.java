@@ -9,8 +9,11 @@ public class Input implements KeyListener {
 	public boolean left = false;
 	public boolean right = false;
 	public boolean enter = false;
+	public boolean space = false;
+	public boolean escape = false;
 
 	public void keyTyped(KeyEvent e) {
+
 	}
 
 	public void keyPressed(KeyEvent e) {
@@ -31,9 +34,12 @@ public class Input implements KeyListener {
 			left = true;
 
 		}
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			space = true;
+		}
 
 		if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
-			System.exit(0);
+			//System.exit(0);
 		}
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			enter = true;
@@ -43,7 +49,6 @@ public class Input implements KeyListener {
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			up = false;
-
 		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			down = false;
 
@@ -56,6 +61,9 @@ public class Input implements KeyListener {
 		}
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			enter = false;
+		}
+		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+			space = false;
 		}
 	}
 }

@@ -28,12 +28,11 @@ public class Bonus extends JPanel {
 	public int x = Main.mainFrame.getWidth();
 	public int y = rand.nextInt(Main.mainFrame.getHeight() - 20);
 
-	public void update(int index) {
+	public void update() {
 		x -= Main.speed;
 		if (x <= 0) {
-			Main.bonus.remove(index);
+			//Main.bonus.remove(index);
 		}
-
 	}
 
 	public void paintComponent(Graphics g) {

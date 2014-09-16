@@ -39,7 +39,7 @@ public class Background extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(image, x1, y1, width, height, null);
+		g.drawImage(image, x1, y1, width+5, height, null);
 		g.drawImage(image, x2, y2, width+5, height, null);
 	}
 }

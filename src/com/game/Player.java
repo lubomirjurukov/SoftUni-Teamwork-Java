@@ -3,6 +3,8 @@ package com.game;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -15,6 +17,7 @@ public class Player extends JPanel {
 	int height = 50;
 	boolean collision = false;
 	boolean bonuscollision = false;
+	private  List<Projectile> projectiles = new ArrayList<Projectile>();
 
 	public int getX() {
 		return this.x;
@@ -35,6 +38,23 @@ public class Player extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(image, x, y, width, height, null);
+		for (int i = 0; i < projectiles.size(); i++) {
+			projectiles.get(i).paintComponent(g);
+		}
+	}
+	public void update(Input input){
+		if(input.space){
+			Projectile tempProjectile = new Projectile();
+			tempProjectile.x=x;
+			tempProjectile.y=y;
+			projectiles.add(tempProjectile);
+		}
+		for (int i = 0; i < projectiles.size(); i++) {
+			projectiles.get(i).update();
+			if(projectiles.get(i).x>=Main.mainFrame.getWidth()){
+				projectiles.remove(i);
+			}
+		}
 	}
 
 	public boolean detectEnemyCollision(Enemy enemy) {

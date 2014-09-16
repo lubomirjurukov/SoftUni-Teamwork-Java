@@ -34,25 +34,20 @@ public class Bonus extends JPanel {
 
 	public void update() {
 		x -= Main.speed;
-		if (x <= 0) {
-			//Main.bonus.remove(index);
-		}
 	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		g.drawImage(image, x, y, size, size, null);
 	}
-
+	
 	public void getBonus(Input input) {
 		switch (randBonus) {
 		case 1:
-			System.out.println("Size changed!");
 			Main.player.height = randPlayerSize;
 			Main.player.width = randPlayerSize;
 			break;
 		case 2:
-			System.out.println("Faster enemies!");
 			Main.speed = 6 + rand.nextInt(5);
 			break;
 		case 3:

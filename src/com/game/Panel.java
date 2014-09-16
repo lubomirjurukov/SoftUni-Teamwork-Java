@@ -7,6 +7,9 @@ import java.awt.event.ActionListener;
 import java.util.Random;
 import java.util.ArrayList;
 import java.awt.Color;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -49,6 +52,13 @@ public class Panel extends JPanel implements ActionListener {
 				Main.enemys.get(i).update();
 				if (Main.player.detectEnemyCollision(Main.enemys.get(i))) {
 					deathScreen = true;
+					try {
+						PrintWriter pw = new PrintWriter(Main.save);
+						pw.println(String.valueOf(Main.score));
+						pw.close();
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
 				}
 			}
 			for (int i = 0; i < Main.bonus.size(); i++) {

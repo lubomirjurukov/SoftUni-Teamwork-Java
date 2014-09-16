@@ -18,7 +18,7 @@ public class Player extends JPanel {
 	boolean collision = false;
 	boolean bonuscollision = false;
 	private  List<Projectile> projectiles = new ArrayList<Projectile>();
-	private int timer = 100;
+	private int timer = 50;
 
 	public int getX() {
 		return this.x;
@@ -58,7 +58,7 @@ public class Player extends JPanel {
 				&& getX() <= Main.mainFrame.getWidth() / 2 - 300) {
 			x += 3;
 		}
-		if(input.space&&timer==100){
+		if(input.space&&timer==50){
 			timer=0;
 			Projectile tempProjectile = new Projectile();
 			tempProjectile.x=x;
@@ -71,7 +71,7 @@ public class Player extends JPanel {
 				projectiles.remove(i);
 			}
 		}
-		if(timer!=100){
+		if(timer!=50){
 			timer++;
 		}
 	}

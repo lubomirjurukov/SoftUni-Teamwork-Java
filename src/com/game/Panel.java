@@ -155,7 +155,6 @@ public class Panel extends JPanel implements ActionListener {
 			Main.player.paintComponent(g);
 			g.setColor(Color.red);
 			g.setFont(new Font("TimesRoman", Font.PLAIN,40));
-			g.drawString("Score: " + String.valueOf(Main.score),10,100);
 			// Draw enemies
 			for (int i = 0; i < Main.enemys.size(); i++) {
 				Main.enemys.get(i).paintComponent(g);
@@ -164,6 +163,7 @@ public class Panel extends JPanel implements ActionListener {
 			for (int i = 0; i < Main.bonus.size(); i++) {
 				Main.bonus.get(i).paintComponent(g);
 			}
+			g.drawString("Score: " + String.valueOf(Main.score),10,50);
 		}
 	}
 }

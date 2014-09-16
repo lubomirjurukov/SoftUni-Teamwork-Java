@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -24,7 +23,7 @@ public class Panel extends JPanel implements ActionListener {
 	public boolean deathScreen = false;
 	long gameOverTimer = 0;
 	long tempScore = 0;
-	
+
 	public void setGameRunning(boolean gameRunning) {
 		this.gameRunning = gameRunning;
 	}
@@ -50,7 +49,7 @@ public class Panel extends JPanel implements ActionListener {
 				Main.enemys.add(new Enemy());
 				timer = 0;
 			}
-			//Update enemies
+			// Update enemies
 			for (int i = 0; i < Main.enemys.size(); i++) {
 				Main.enemys.get(i).update();
 				if (Main.player.detectEnemyCollision(Main.enemys.get(i))) {
@@ -74,10 +73,10 @@ public class Panel extends JPanel implements ActionListener {
 					}
 				}
 			}
-			//Update bonuses
+			// Update bonuses
 			for (int i = 0; i < Main.bonus.size(); i++) {
 				Main.bonus.get(i).update();
-				if(Main.bonus.get(i).x<=0){
+				if (Main.bonus.get(i).x <= 0) {
 					Main.bonus.remove(i);
 				}
 				if (Main.player.detectBonusCollision(Main.bonus.get(i))) {
@@ -87,20 +86,20 @@ public class Panel extends JPanel implements ActionListener {
 					Main.player.collisionBonus = false;
 				}
 			}
-			if(bonusTime!=0){
+			if (bonusTime != 0) {
 				bonusTime--;
 			}
-			if(bonusTime==0){
+			if (bonusTime == 0) {
 				Main.speed = 5;
 				Main.player.height = 50;
 				Main.player.width = 50;
 			}
-			if(bonus!=0){
+			if (bonus != 0) {
 				bonus--;
 			}
-			if(bonus==0){
+			if (bonus == 0) {
 				Main.bonus.add(new Bonus());
-				bonus = 100+rand.nextInt(100);
+				bonus = 100 + rand.nextInt(100);
 			}
 			Main.background.update();
 			if (timer != 10) {
@@ -110,37 +109,41 @@ public class Panel extends JPanel implements ActionListener {
 		if (!gameRunning) {
 			Main.menu.setInput(input.up, input.down, input.enter);
 		}
-		if (deathScreen){
+		if (deathScreen) {
 			gameOverTimer++;
 			Main.sound.stop();
 			soundOfDeath.play();
 		}
 		repaint();
 	}
-	
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		//Draw MainMenu
+		// Draw MainMenu
 		if (!gameRunning && !deathScreen) {
 			Main.background.paintComponent(g);
 			Main.menu.paintComponent(g);
 		}
-		//Draw GameOver Screen
-		if(gameRunning && deathScreen){
+		// Draw GameOver Screen
+		if (gameRunning && deathScreen) {
 			g.setColor(Color.red);
-			g.setFont(new Font("TimesRoman", Font.PLAIN,40));
-			g.drawImage(Main.background.gameOver, Main.mainFrame.getWidth()/2-200, 
-					Main.mainFrame.getHeight()/2-200, 400, 400, null);
-			g.drawString("Score: " + String.valueOf(Main.score),Main.mainFrame.getWidth()/2 - 200, Main.mainFrame.getHeight()/2 + 250);
-			if(gameOverTimer >= 100){
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
+			g.drawImage(Main.background.gameOver,
+			Main.mainFrame.getWidth() / 2 - 200,
+			Main.mainFrame.getHeight() / 2 - 200, 400, 400, null);
+			g.drawString("Score: " + String.valueOf(Main.score),
+			Main.mainFrame.getWidth() / 2 - 200,
+			Main.mainFrame.getHeight() / 2 + 250);
+			if (gameOverTimer >= 100) {
 				soundOfDeath.stop();
 				Main.sound.loop();
 				Main.score = 0;
-				Main.menu.init(Main.mainFrame.getWidth() / 2 - 50, Main.mainFrame.getHeight() / 2,
-						Main.mainFrame.getHeight() / 2 + 60);
+				Main.menu.init(Main.mainFrame.getWidth() / 2 - 50,
+				Main.mainFrame.getHeight() / 2,
+				Main.mainFrame.getHeight() / 2 + 60);
 				gameRunning = false;
 				Main.player = new Player();
-				Main.player.setY(Main.mainFrame.getHeight() / 2); 
+				Main.player.setY(Main.mainFrame.getHeight() / 2);
 				Main.enemys = new ArrayList<Enemy>();
 				Main.bonus = new ArrayList<Bonus>();
 				Main.background.paintComponent(g);
@@ -149,12 +152,12 @@ public class Panel extends JPanel implements ActionListener {
 				gameOverTimer = 0;
 			}
 		}
-		//Draw the Game
-		if(gameRunning && !deathScreen) {
+		// Draw the Game
+		if (gameRunning && !deathScreen) {
 			Main.background.paintComponent(g);
 			Main.player.paintComponent(g);
 			g.setColor(Color.red);
-			g.setFont(new Font("TimesRoman", Font.PLAIN,40));
+			g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
 			// Draw enemies
 			for (int i = 0; i < Main.enemys.size(); i++) {
 				Main.enemys.get(i).paintComponent(g);
@@ -163,7 +166,7 @@ public class Panel extends JPanel implements ActionListener {
 			for (int i = 0; i < Main.bonus.size(); i++) {
 				Main.bonus.get(i).paintComponent(g);
 			}
-			g.drawString("Score: " + String.valueOf(Main.score),10,50);
+			g.drawString("Score: " + String.valueOf(Main.score), 10, 50);
 		}
 	}
 }

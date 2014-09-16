@@ -18,7 +18,7 @@ public class Player extends JPanel {
 	int height = 50;
 	boolean collision = false;
 	boolean collisionBonus = false;
-	private  List<Projectile> projectiles = new ArrayList<Projectile>();
+	private List<Projectile> projectiles = new ArrayList<Projectile>();
 	private int timer = 50;
 
 	public int getX() {
@@ -44,36 +44,35 @@ public class Player extends JPanel {
 			projectiles.get(i).paintComponent(g);
 		}
 	}
-	public void update(Input input){
+
+	public void update(Input input) {
 		if (input.up && getY() >= 0) {
 			y -= 3;
 		}
-		if (input.down
-				&& getY() <= Main.mainFrame.getHeight() - 90) {
+		if (input.down && getY() <= Main.mainFrame.getHeight() - 90) {
 			y += 3;
 		}
 		if (input.left && getX() >= 0) {
 			x -= 3;
 		}
-		if (input.right
-				&& getX() <= Main.mainFrame.getWidth() / 2 - 300) {
+		if (input.right && getX() <= Main.mainFrame.getWidth() / 2 - 300) {
 			x += 3;
 		}
-		if(input.space&&timer==50){
+		if (input.space && timer == 50) {
 			sound.play();
-			timer=0;
+			timer = 0;
 			Projectile tempProjectile = new Projectile();
-			tempProjectile.x=x;
-			tempProjectile.y=y;
+			tempProjectile.x = x;
+			tempProjectile.y = y;
 			projectiles.add(tempProjectile);
 		}
 		for (int i = 0; i < projectiles.size(); i++) {
 			projectiles.get(i).update(i);
-			if(projectiles.get(i).x>=Main.mainFrame.getWidth()){
+			if (projectiles.get(i).x >= Main.mainFrame.getWidth()) {
 				projectiles.remove(i);
 			}
 		}
-		if(timer!=50){
+		if (timer != 50) {
 			timer++;
 		}
 	}
@@ -99,8 +98,8 @@ public class Player extends JPanel {
 				if (((bonus.x + bonusX) - (x + width / 2))
 						* ((bonus.x + bonusX) - (x + width / 2))
 						+ ((bonus.y + bonusY) - (y + height / 2))
-						* ((bonus.y + bonusY) - (y + height / 2)) <= (width
-						/ 2 * width / 2)) {
+						* ((bonus.y + bonusY) - (y + height / 2)) <= (width / 2
+						* width / 2)) {
 					collisionBonus = true;
 				}
 			}

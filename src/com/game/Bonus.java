@@ -3,9 +3,9 @@ package com.game;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.util.*;
+import java.util.Random;
 
-import javax.swing.*;
+import javax.swing.JPanel;
 
 public class Bonus extends JPanel {
 
@@ -13,7 +13,7 @@ public class Bonus extends JPanel {
 	private Image image = Toolkit.getDefaultToolkit().createImage(
 			"res/bonus.png");
 	int size = 30;
-	int randSize = 25+rand.nextInt(30);
+	int randSize = 25 + rand.nextInt(30);
 	int randPlayerSize = 60;
 	private int randBonus = 1 + rand.nextInt(6);
 
@@ -40,7 +40,7 @@ public class Bonus extends JPanel {
 		super.paintComponent(g);
 		g.drawImage(image, x, y, size, size, null);
 	}
-	
+
 	public void getBonus(Input input) {
 		switch (randBonus) {
 		case 1:

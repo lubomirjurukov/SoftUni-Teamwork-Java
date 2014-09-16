@@ -21,6 +21,7 @@ public class Background extends JPanel {
 	private int speed = Main.speed;
 	private boolean init = true;
 	private TimeUnit unit;
+
 	public void init(int w, int h) {
 		if (init) {
 			this.width = w;
@@ -31,11 +32,10 @@ public class Background extends JPanel {
 	}
 
 	public void update() {
-		if(Main.speed == 0){
+		if (Main.speed == 0) {
 			x1 = 0;
 			x2 = 0;
-		}
-		else {
+		} else {
 			x1 -= Main.speed;
 			x2 -= Main.speed;
 			if (Math.abs(x1) >= width) {
@@ -49,7 +49,7 @@ public class Background extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(image, x1, y1, width+5, height, null);
-		g.drawImage(image, x2, y2, width+5, height, null);
+		g.drawImage(image, x1, y1, width + 5, height, null);
+		g.drawImage(image, x2, y2, width + 5, height, null);
 	}
 }

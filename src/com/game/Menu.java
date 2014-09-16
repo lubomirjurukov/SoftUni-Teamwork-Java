@@ -59,8 +59,8 @@ public class Menu extends JPanel {
 		g.drawImage(start, x, y1, width, height, null);
 		g.drawImage(end, x, y2, width, height, null);
 		g.setColor(Color.red);
-		g.setFont(new Font("TimesRoman", Font.PLAIN,20));
-		g.drawString("High Score: " + String.valueOf(score),x,y1-40);
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 20));
+		g.drawString("High Score: " + String.valueOf(score), x, y1 - 40);
 		if (index == 0) {
 			g.drawImage(border, x, y1, width, height, null);
 		}

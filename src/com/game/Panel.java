@@ -10,13 +10,13 @@ import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 public class Panel extends JPanel implements ActionListener {
 	private Random rand = new Random();
 	private Input input = new Input();
+	private static Sound soundOfDeath = new Sound("res/Death.wav");
 	private boolean gameRunning = false;
 	private int bonus = 100;
 	private int bonusTime = 0;
@@ -98,6 +98,8 @@ public class Panel extends JPanel implements ActionListener {
 		}
 		if (deathScreen){
 			gameOverTimer++;
+			Main.sound.stop();
+			soundOfDeath.play();
 		}
 		repaint();
 	}
@@ -112,7 +114,11 @@ public class Panel extends JPanel implements ActionListener {
 			g.drawImage(Main.background.gameOver, Main.mainFrame.getWidth()/2-200, 
 					Main.mainFrame.getHeight()/2-200, 400, 400, null);
 			if(gameOverTimer == 100){
+				soundOfDeath.stop();
+				Main.sound.loop();
 				Main.score = 0;
+				Main.menu.init(Main.mainFrame.getWidth() / 2 - 50, Main.mainFrame.getHeight() / 2,
+						Main.mainFrame.getHeight() / 2 + 60);
 				gameRunning = false;
 				Main.player = new Player();
 				Main.player.setY(Main.mainFrame.getHeight() / 2); 

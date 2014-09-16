@@ -123,8 +123,11 @@ public class Panel extends JPanel implements ActionListener {
 			Main.menu.paintComponent(g);
 		}
 		if(gameRunning && deathScreen){
+			g.setColor(Color.red);
+			g.setFont(new Font("TimesRoman", Font.PLAIN,40));
 			g.drawImage(Main.background.gameOver, Main.mainFrame.getWidth()/2-200, 
 					Main.mainFrame.getHeight()/2-200, 400, 400, null);
+			g.drawString("Score: " + String.valueOf(Main.score),Main.mainFrame.getWidth()/2 - 200, Main.mainFrame.getHeight()/2 + 250);
 			if(gameOverTimer == 100){
 				soundOfDeath.stop();
 				Main.sound.loop();
@@ -145,8 +148,8 @@ public class Panel extends JPanel implements ActionListener {
 			Main.background.paintComponent(g);
 			Main.player.paintComponent(g);
 			g.setColor(Color.red);
-			g.setFont(new Font("TimesRoman", Font.PLAIN,20));
-			g.drawString(String.valueOf(Main.score),10,30);
+			g.setFont(new Font("TimesRoman", Font.PLAIN,40));
+			g.drawString("Score: " + String.valueOf(Main.score),10,100);
 			for (int i = 0; i < Main.enemys.size(); i++) {
 				Main.enemys.get(i).paintComponent(g);
 			}

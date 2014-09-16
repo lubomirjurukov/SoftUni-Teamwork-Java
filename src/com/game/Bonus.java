@@ -15,7 +15,7 @@ public class Bonus extends JPanel {
 	int size = 30;
 	int randSize = 25+rand.nextInt(30);
 	int randPlayerSize = 60;
-	private int randBonus = rand.nextInt(6);
+	private int randBonus = 1 + rand.nextInt(6);
 
 	public int getXcoor() {
 		return x;
@@ -69,6 +69,9 @@ public class Bonus extends JPanel {
 			keepController = input.left;
 			input.left = input.right;
 			input.right = keepController;
+			break;
+		case 6:
+			Main.score += 100;
 			break;
 		}
 	}

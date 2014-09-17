@@ -135,7 +135,7 @@ public class Panel extends JPanel implements ActionListener {
 			g.drawString("Score: " + String.valueOf(Main.score),
 			Main.mainFrame.getWidth() / 2 - 200,
 			Main.mainFrame.getHeight() / 2 + 250);
-			if (gameOverTimer >= 100) {
+			if (gameOverTimer >= 200) {
 				soundOfDeath.stop();
 				Main.sound.loop();
 				Main.score = 0;

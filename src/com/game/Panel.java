@@ -82,7 +82,7 @@ public class Panel extends JPanel implements ActionListener {
 				if (Main.player.detectBonusCollision(Main.bonus.get(i))) {
 					Main.bonus.get(i).getBonus(input);
 					Main.bonus.remove(i);
-					bonusTime = 100;
+					bonusTime = 200;
 					Main.player.collisionBonus = false;
 				}
 			}

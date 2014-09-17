@@ -54,7 +54,7 @@ public class Panel extends JPanel implements ActionListener {
 				Main.enemys.get(i).update();
 				if (Main.player.detectEnemyCollision(Main.enemys.get(i))) {
 					deathScreen = true;
-					soundOfDeath.play();
+					soundOfDeath.loop();
 					Scanner sc;
 					try {
 						sc = new Scanner(Main.save);
@@ -135,7 +135,7 @@ public class Panel extends JPanel implements ActionListener {
 			g.drawString("Score: " + String.valueOf(Main.score),
 			Main.mainFrame.getWidth() / 2 - 200,
 			Main.mainFrame.getHeight() / 2 + 250);
-			if (gameOverTimer >= 200) {
+			if (gameOverTimer >= 100) {
 				soundOfDeath.stop();
 				Main.sound.loop();
 				Main.score = 0;

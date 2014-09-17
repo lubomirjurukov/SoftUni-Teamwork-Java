@@ -19,7 +19,7 @@ public class Player extends JPanel {
 	boolean collision = false;
 	boolean collisionBonus = false;
 	private List<Projectile> projectiles = new ArrayList<Projectile>();
-	private int timer = 50;
+	private int timer = 25;
 
 	public int getX() {
 		return this.x;
@@ -47,18 +47,18 @@ public class Player extends JPanel {
 
 	public void update(Input input) {
 		if (input.up && getY() >= 0) {
-			y -= 3;
+			y -= 6;
 		}
 		if (input.down && getY() <= Main.mainFrame.getHeight() - 90) {
-			y += 3;
+			y += 6;
 		}
 		if (input.left && getX() >= 0) {
-			x -= 3;
+			x -= 6;
 		}
 		if (input.right && getX() <= Main.mainFrame.getWidth() / 2 - 300) {
-			x += 3;
+			x += 6;
 		}
-		if (input.space && timer == 50) {
+		if (input.space && timer == 25) {
 			sound.play();
 			timer = 0;
 			Projectile tempProjectile = new Projectile();
@@ -72,7 +72,7 @@ public class Player extends JPanel {
 				projectiles.remove(i);
 			}
 		}
-		if (timer != 50) {
+		if (timer != 25) {
 			timer++;
 		}
 	}

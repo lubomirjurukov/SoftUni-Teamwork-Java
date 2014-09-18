@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar Save_the_penguin.jar
+java -jar The_flying_penguin.jar

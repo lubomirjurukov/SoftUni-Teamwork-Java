@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import javax.swing.JPanel;
 
 public class Background extends JPanel {
+
 	private int width = 0;
 	private int height = 0;
 	private Image image = Toolkit.getDefaultToolkit().createImage(

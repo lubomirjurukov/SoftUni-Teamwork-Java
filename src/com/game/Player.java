@@ -18,7 +18,7 @@ public class Player extends JPanel {
 	int height = 50;
 	boolean collision = false;
 	boolean collisionBonus = false;
-	private List<Projectile> projectiles = new ArrayList<Projectile>();
+	public List<Projectile> projectiles = new ArrayList<Projectile>();
 	private int timer = 25;
 
 	public int getX() {

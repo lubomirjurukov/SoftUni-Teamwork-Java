@@ -40,17 +40,17 @@ public class Background extends JPanel {
 			x1 -= Main.speed;
 			x2 -= Main.speed;
 			if (Math.abs(x1) >= width) {
-				x1 = width;
+				x1 = width+(width-Math.abs(x1));
 			}
 			if (Math.abs(x2) >= width) {
-				x2 = width;
+				x2 = width+(width-Math.abs(x2));
 			}
 		}
 	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(image, x1, y1, width + 5, height, null);
-		g.drawImage(image, x2, y2, width + 5, height, null);
+		g.drawImage(image, x1, y1, width, height, null);
+		g.drawImage(image, x2, y2, width, height, null);
 	}
 }

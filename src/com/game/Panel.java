@@ -113,6 +113,7 @@ public class Panel extends JPanel implements ActionListener {
 		if (deathScreen) {
 			gameOverTimer++;
 			Main.player.projectiles.removeAll(Main.player.projectiles);
+			Main.player.disabled = true;
 			Main.sound.stop();
 		}
 		repaint();
@@ -139,6 +140,7 @@ public class Panel extends JPanel implements ActionListener {
 				soundOfDeath.stop();
 				Main.sound.loop();
 				Main.score = 0;
+				Main.player.disabled = true;
 				Main.menu.init(Main.mainFrame.getWidth() / 2 - 50,
 				Main.mainFrame.getHeight() / 2,
 				Main.mainFrame.getHeight() / 2 + 60);

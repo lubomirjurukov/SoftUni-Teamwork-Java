@@ -16,6 +16,7 @@ public class Player extends JPanel {
 	int y = 0;
 	int width = 50;
 	int height = 50;
+	boolean disabled = false;
 	boolean collision = false;
 	boolean collisionBonus = false;
 	public List<Projectile> projectiles = new ArrayList<Projectile>();
@@ -58,7 +59,7 @@ public class Player extends JPanel {
 		if (input.right && getX() <= Main.mainFrame.getWidth() / 2 - 300) {
 			x += 6;
 		}
-		if (input.space && timer == 25) {
+		if (input.space && timer == 25 && !disabled) {
 			sound.play();
 			timer = 0;
 			Projectile tempProjectile = new Projectile();

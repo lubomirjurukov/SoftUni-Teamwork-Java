@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -91,6 +92,7 @@ public class Panel extends JPanel implements ActionListener {
 				bonusTime--;
 			}
 			if (bonusTime == 0) {
+				Main.invert = false;
 				Main.speed = 5;
 				Main.player.height = 50;
 				Main.player.width = 50;
@@ -131,25 +133,26 @@ public class Panel extends JPanel implements ActionListener {
 			g.setColor(Color.red);
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
 			g.drawImage(Main.background.gameOver,
-			Main.mainFrame.getWidth() / 2 - 200,
-			Main.mainFrame.getHeight() / 2 - 200, 400, 400, null);
+					Main.mainFrame.getWidth() / 2 - 200,
+					Main.mainFrame.getHeight() / 2 - 200, 400, 400, null);
 			g.drawString("Score: " + String.valueOf(Main.score),
-			Main.mainFrame.getWidth() / 2 - 200,
-			Main.mainFrame.getHeight() / 2 + 250);
+					Main.mainFrame.getWidth() / 2 - 200,
+					Main.mainFrame.getHeight() / 2 + 250);
 			if (gameOverTimer >= 200) {
 				soundOfDeath.stop();
 				Main.sound.loop();
 				Main.score = 0;
 				Main.player.disabled = true;
 				Main.menu.init(Main.mainFrame.getWidth() / 2 - 50,
-				Main.mainFrame.getHeight() / 2,
-				Main.mainFrame.getHeight() / 2 + 60);
+						Main.mainFrame.getHeight() / 2,
+						Main.mainFrame.getHeight() / 2 + 60);
 				gameRunning = false;
 				Main.player = new Player();
 				Main.player.setY(Main.mainFrame.getHeight() / 2);
 				Main.enemys = new ArrayList<Enemy>();
 				Main.bonus = new ArrayList<Bonus>();
-				Main.background.init(Main.mainFrame.getWidth(), Main.mainFrame.getHeight());
+				Main.background.init(Main.mainFrame.getWidth(),
+						Main.mainFrame.getHeight());
 				Main.background.paintComponent(g);
 				Main.menu.paintComponent(g);
 				deathScreen = false;

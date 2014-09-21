@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.JFrame;
 
 public class Main {
@@ -18,6 +19,7 @@ public class Main {
 	public static Menu menu = new Menu();
 	public static Sound sound = new Sound("res/sound.wav");
 	public static File save = new File("res/save.txt");
+	public static boolean invert = false;
 	private static boolean init = false;
 	public static long score = 0;
 

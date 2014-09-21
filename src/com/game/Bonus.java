@@ -13,8 +13,8 @@ public class Bonus extends JPanel {
 	private Image image = Toolkit.getDefaultToolkit().createImage(
 			"res/bonus.png");
 	int size = 30;
-	int randSize = 25 + rand.nextInt(30);
-	int randPlayerSize = 60;
+	int randSize = 25 + rand.nextInt(20);
+	int randPlayerSize = 50 + rand.nextInt(15);
 	private int randBonus = 1 + rand.nextInt(6);
 
 	public int getXcoor() {
@@ -48,7 +48,7 @@ public class Bonus extends JPanel {
 			Main.player.width = randPlayerSize;
 			break;
 		case 2:
-			Main.speed = 6 + rand.nextInt(5);
+			Main.speed = 5 + rand.nextInt(5);
 			break;
 		case 3:
 			Main.player.height -= randSize;
@@ -58,12 +58,7 @@ public class Bonus extends JPanel {
 			Main.speed = 1 + rand.nextInt(4);
 			break;
 		case 5:
-			boolean keepController = input.up;
-			input.up = input.down;
-			input.down = keepController;
-			keepController = input.left;
-			input.left = input.right;
-			input.right = keepController;
+			Main.invert = true;
 			break;
 		case 6:
 			Main.score += 100;

@@ -3,7 +3,6 @@ package com.game;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
-
 import javax.swing.JPanel;
 
 public class Projectile extends JPanel {

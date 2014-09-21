@@ -40,10 +40,10 @@ public class Background extends JPanel {
 			x1 -= Main.speed;
 			x2 -= Main.speed;
 			if (Math.abs(x1) >= width) {
-				x1 = width+(width-Math.abs(x1));
+				x1 = width + (width - Math.abs(x1));
 			}
 			if (Math.abs(x2) >= width) {
-				x2 = width+(width-Math.abs(x2));
+				x2 = width + (width - Math.abs(x2));
 			}
 		}
 	}

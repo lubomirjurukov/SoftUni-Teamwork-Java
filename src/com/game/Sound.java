@@ -3,6 +3,7 @@ package com.game;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -35,7 +36,8 @@ public class Sound {
 			throw new RuntimeException("Sound: Input/Output Error: " + e);
 		} catch (LineUnavailableException e) {
 			e.printStackTrace();
-			throw new RuntimeException("Sound: Line Unavailable Exception Error: " + e);
+			throw new RuntimeException(
+					"Sound: Line Unavailable Exception Error: " + e);
 		}
 		FloatControl gainControl = (FloatControl) clip
 				.getControl(FloatControl.Type.MASTER_GAIN);

@@ -48,16 +48,32 @@ public class Player extends JPanel {
 
 	public void update(Input input) {
 		if (input.up && getY() >= 0) {
-			y -= 6;
+			if(Main.invert&& getY() <= Main.mainFrame.getHeight() - 90){
+				y += 6;
+			}else{
+				y -= 6;
+			}
 		}
 		if (input.down && getY() <= Main.mainFrame.getHeight() - 90) {
-			y += 6;
+			if(Main.invert&& getY() >= 0){
+				y -= 6;
+			}else{
+				y += 6;
+			}
 		}
 		if (input.left && getX() >= 0) {
-			x -= 6;
+			if(Main.invert&& getX() <= Main.mainFrame.getWidth() / 2 - 300){
+				x += 6;
+			}else{
+				x -= 6;
+			}
 		}
 		if (input.right && getX() <= Main.mainFrame.getWidth() / 2 - 300) {
-			x += 6;
+			if(Main.invert&& getX() >= 0){
+				x -= 6;
+			}else{
+				x += 6;
+			}
 		}
 		if (input.space && timer == 25 && !disabled) {
 			sound.play();

@@ -19,20 +19,9 @@ public class Player extends JPanel {
 	boolean disabled = false;
 	boolean collision = false;
 	boolean collisionBonus = false;
+	public boolean invertControl = false;
 	public List<Projectile> projectiles = new ArrayList<Projectile>();
 	private int timer = 25;
-
-	public int getX() {
-		return this.x;
-	}
-
-	public void setX(int x) {
-		this.x = x;
-	}
-
-	public int getY() {
-		return this.y;
-	}
 
 	public void setY(int y) {
 		this.y = y;
@@ -47,31 +36,31 @@ public class Player extends JPanel {
 	}
 
 	public void update(Input input) {
-		if (input.up && getY() >= 0) {
-			if(Main.invert&& getY() <= Main.mainFrame.getHeight() - 90){
+		if (input.up && y >= 0) {
+			if (invertControl && y <= Main.mainFrame.getHeight() - 90) {
 				y += 6;
-			}else{
+			} else {
 				y -= 6;
 			}
 		}
-		if (input.down && getY() <= Main.mainFrame.getHeight() - 90) {
-			if(Main.invert&& getY() >= 0){
+		if (input.down && y <= Main.mainFrame.getHeight() - 90) {
+			if (invertControl && y >= 0) {
 				y -= 6;
-			}else{
+			} else {
 				y += 6;
 			}
 		}
-		if (input.left && getX() >= 0) {
-			if(Main.invert&& getX() <= Main.mainFrame.getWidth() / 2 - 300){
+		if (input.left && x >= 0) {
+			if (invertControl && x <= Main.mainFrame.getWidth() / 2 - 300) {
 				x += 6;
-			}else{
+			} else {
 				x -= 6;
 			}
 		}
-		if (input.right && getX() <= Main.mainFrame.getWidth() / 2 - 300) {
-			if(Main.invert&& getX() >= 0){
+		if (input.right && x <= Main.mainFrame.getWidth() / 2 - 300) {
+			if (invertControl && x >= 0) {
 				x -= 6;
-			}else{
+			} else {
 				x += 6;
 			}
 		}
@@ -95,13 +84,13 @@ public class Player extends JPanel {
 	}
 
 	public boolean detectEnemyCollision(Enemy enemy) {
-		for (int enemyY = 0; enemyY <= enemy.getRandHeight(); enemyY++) {
-			for (int enemyX = 0; enemyX <= enemy.getRandWidth(); enemyX++) {
-				if (((enemy.getX() + enemyX) - (x + width / 2))
-						* ((enemy.getX() + enemyX) - (x + width / 2))
-						+ ((enemy.getY() + enemyY) - (y + height / 2))
-						* ((enemy.getY() + enemyY) - (y + height / 2)) <= (width
-						/ 2 * width / 2)) {
+		for (int enemyY = 0; enemyY <= enemy.randHeight; enemyY++) {
+			for (int enemyX = 0; enemyX <= enemy.randWidth; enemyX++) {
+				if (((enemy.x + enemyX) - (x + width / 2))
+						* ((enemy.x + enemyX) - (x + width / 2))
+						+ ((enemy.y + enemyY) - (y + height / 2))
+						* ((enemy.y + enemyY) - (y + height / 2)) <= (width / 2
+						* width / 2)) {
 					collision = true;
 				}
 			}

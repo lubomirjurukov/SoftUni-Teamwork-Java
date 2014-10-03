@@ -14,33 +14,13 @@ public class Enemy extends JPanel {
 	Random rand = new Random();
 	int randWidth = rand.nextInt(60) + 30;
 	int randHeight = rand.nextInt(60) + 30;
-	public int X;
-	public int Y;
+	public int x;
+	public int y;
 	private boolean init = false;
 
-	public int getRandHeight() {
-		return this.randHeight;
-	}
-
-	public int getRandWidth() {
-		return this.randWidth;
-	}
-
-	public int getX() {
-		return this.X;
-	}
-
-	public void setX(int x) {
-		this.X = x;
-	}
-
-	public int getY() {
-		return this.Y;
-	}
-
 	private void init() {
-		X = Main.mainFrame.getWidth();
-		Y = rand.nextInt(Main.mainFrame.getHeight() - 20);
+		x = Main.mainFrame.getWidth();
+		y = rand.nextInt(Main.mainFrame.getHeight() - 20);
 		init = true;
 	}
 
@@ -48,15 +28,10 @@ public class Enemy extends JPanel {
 		if (!init) {
 			init();
 		}
-		if (Main.speed == 0) {
-			this.X = Main.speed;
-		}
-		if (Main.speed != 0) {
-			this.X -= Main.speed;
-		}
-		if (X + randWidth <= 0) {
-			X = Main.mainFrame.getWidth();
-			Y = rand.nextInt(Main.mainFrame.getHeight() - 20);
+		this.x -= Main.speed;
+		if (x + randWidth <= 0) {
+			x = Main.mainFrame.getWidth();
+			y = rand.nextInt(Main.mainFrame.getHeight() - 20);
 			randWidth = rand.nextInt(60) + 30;
 			randHeight = rand.nextInt(60) + 30;
 		}
@@ -64,6 +39,6 @@ public class Enemy extends JPanel {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		g.drawImage(image, X, Y, randWidth, randHeight, null);
+		g.drawImage(image, x, y, randWidth, randHeight, null);
 	}
 }

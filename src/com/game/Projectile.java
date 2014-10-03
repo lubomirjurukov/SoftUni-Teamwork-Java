@@ -16,9 +16,9 @@ public class Projectile extends JPanel {
 
 	public void update(int index) {
 		x += 7;
-		for (int i = 0; i < Main.enemys.size(); i++) {
-			if (enemyCollision(Main.enemys.get(i))) {
-				Main.enemys.remove(i);
+		for (int i = 0; i < Main.enemies.size(); i++) {
+			if (enemyCollision(Main.enemies.get(i))) {
+				Main.enemies.remove(i);
 				collision = false;
 				Main.score += 20;
 				disableCollision();
@@ -32,12 +32,12 @@ public class Projectile extends JPanel {
 
 	private boolean enemyCollision(Enemy enemy) {
 		if (!disabled) {
-			for (int enemyY = 0; enemyY <= enemy.getRandHeight(); enemyY++) {
-				for (int enemyX = 0; enemyX <= enemy.getRandWidth(); enemyX++) {
-					if (((enemy.getX() + enemyX) - (x + size / 2))
-							* ((enemy.getX() + enemyX) - (x + size / 2))
-							+ ((enemy.getY() + enemyY) - (y + size / 2))
-							* ((enemy.getY() + enemyY) - (y + size / 2)) <= (size
+			for (int enemyY = 0; enemyY <= enemy.randHeight; enemyY++) {
+				for (int enemyX = 0; enemyX <= enemy.randWidth; enemyX++) {
+					if (((enemy.x + enemyX) - (x + size / 2))
+							* ((enemy.x + enemyX) - (x + size / 2))
+							+ ((enemy.y + enemyY) - (y + size / 2))
+							* ((enemy.y + enemyY) - (y + size / 2)) <= (size
 							/ 2 * size / 2)) {
 						collision = true;
 					}

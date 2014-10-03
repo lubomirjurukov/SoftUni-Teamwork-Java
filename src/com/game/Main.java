@@ -13,14 +13,12 @@ public class Main {
 	public static int speed = 5;
 	public static Background background = new Background();
 	public static JFrame mainFrame = new JFrame("Save the penguin");
-	public static List<Enemy> enemys = new ArrayList<Enemy>();
-	public static List<Bonus> bonus = new ArrayList<Bonus>();
+	public static List<Enemy> enemies = new ArrayList<Enemy>();
+	public static List<Bonus> bonuses = new ArrayList<Bonus>();
 	public static Panel panel = new Panel();
 	public static Menu menu = new Menu();
 	public static Sound sound = new Sound("res/sound.wav");
 	public static File save = new File("res/save.txt");
-	public static boolean invert = false;
-	private static boolean init = false;
 	public static long score = 0;
 
 	public static void main(String[] args) {
@@ -33,12 +31,9 @@ public class Main {
 				new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB),
 				new Point(), null));
 		sound.loop();
-		if (!init) {
-			menu.init(mainFrame.getWidth() / 2 - 50, mainFrame.getHeight() / 2,
-					mainFrame.getHeight() / 2 + 60);
-			player.setY(mainFrame.getHeight() / 2);
-			background.init(mainFrame.getWidth(), mainFrame.getHeight());
-			init = true;
-		}
+		menu.init(mainFrame.getWidth() / 2 - 50, mainFrame.getHeight() / 2,
+				mainFrame.getHeight() / 2 + 60);
+		background.init(mainFrame.getWidth(), mainFrame.getHeight());
+		player.setY(mainFrame.getHeight() / 2);
 	}
 }

@@ -32,7 +32,7 @@ public class Panel extends JPanel implements ActionListener {
 	private int timer = 0;
 
 	public Panel() {
-		Main.enemys.add(new Enemy());
+		Main.enemies.add(new Enemy());
 		Timer timer = new Timer(1000 / 60, this);
 		timer.start();
 	}
@@ -46,14 +46,13 @@ public class Panel extends JPanel implements ActionListener {
 	public void step() {
 		if (gameRunning) {
 			Main.player.update(input);
-			if (timer == 10 && !(Main.enemys.size() > 40)) {
-				Main.enemys.add(new Enemy());
+			if (timer == 10 && !(Main.enemies.size() > 40)) {
+				Main.enemies.add(new Enemy());
 				timer = 0;
 			}
-			// Update enemies
-			for (int i = 0; i < Main.enemys.size(); i++) {
-				Main.enemys.get(i).update();
-				if (Main.player.detectEnemyCollision(Main.enemys.get(i))) {
+			for (int i = 0; i < Main.enemies.size(); i++) {
+				Main.enemies.get(i).update();
+				if (Main.player.detectEnemyCollision(Main.enemies.get(i))) {
 					deathScreen = true;
 					soundOfDeath.loop();
 					Scanner sc;
@@ -75,15 +74,14 @@ public class Panel extends JPanel implements ActionListener {
 					}
 				}
 			}
-			// Update bonuses
-			for (int i = 0; i < Main.bonus.size(); i++) {
-				Main.bonus.get(i).update();
-				if (Main.bonus.get(i).x <= 0) {
-					Main.bonus.remove(i);
+			for (int i = 0; i < Main.bonuses.size(); i++) {
+				Main.bonuses.get(i).update();
+				if (Main.bonuses.get(i).x <= 0) {
+					Main.bonuses.remove(i);
 				}
-				if (Main.player.detectBonusCollision(Main.bonus.get(i))) {
-					Main.bonus.get(i).getBonus(input);
-					Main.bonus.remove(i);
+				if (Main.player.detectBonusCollision(Main.bonuses.get(i))) {
+					Main.bonuses.get(i).getBonus();
+					Main.bonuses.remove(i);
 					bonusTime = 200;
 					Main.player.collisionBonus = false;
 				}
@@ -92,7 +90,7 @@ public class Panel extends JPanel implements ActionListener {
 				bonusTime--;
 			}
 			if (bonusTime == 0) {
-				Main.invert = false;
+				Main.player.invertControl = false;
 				Main.speed = 5;
 				Main.player.height = 50;
 				Main.player.width = 50;
@@ -101,7 +99,7 @@ public class Panel extends JPanel implements ActionListener {
 				bonus--;
 			}
 			if (bonus == 0) {
-				Main.bonus.add(new Bonus());
+				Main.bonuses.add(new Bonus());
 				bonus = 100 + rand.nextInt(100);
 			}
 			Main.background.update();
@@ -123,12 +121,10 @@ public class Panel extends JPanel implements ActionListener {
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		// Draw MainMenu
 		if (!gameRunning && !deathScreen) {
 			Main.background.paintComponent(g);
 			Main.menu.paintComponent(g);
 		}
-		// Draw GameOver Screen
 		if (gameRunning && deathScreen) {
 			g.setColor(Color.red);
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
@@ -149,8 +145,8 @@ public class Panel extends JPanel implements ActionListener {
 				gameRunning = false;
 				Main.player = new Player();
 				Main.player.setY(Main.mainFrame.getHeight() / 2);
-				Main.enemys = new ArrayList<Enemy>();
-				Main.bonus = new ArrayList<Bonus>();
+				Main.enemies = new ArrayList<Enemy>();
+				Main.bonuses = new ArrayList<Bonus>();
 				Main.background.init(Main.mainFrame.getWidth(),
 						Main.mainFrame.getHeight());
 				Main.background.paintComponent(g);
@@ -159,19 +155,16 @@ public class Panel extends JPanel implements ActionListener {
 				gameOverTimer = 0;
 			}
 		}
-		// Draw the Game
 		if (gameRunning && !deathScreen) {
 			Main.background.paintComponent(g);
 			Main.player.paintComponent(g);
 			g.setColor(Color.red);
 			g.setFont(new Font("TimesRoman", Font.PLAIN, 40));
-			// Draw enemies
-			for (int i = 0; i < Main.enemys.size(); i++) {
-				Main.enemys.get(i).paintComponent(g);
+			for (int i = 0; i < Main.enemies.size(); i++) {
+				Main.enemies.get(i).paintComponent(g);
 			}
-			// Draw bonuses
-			for (int i = 0; i < Main.bonus.size(); i++) {
-				Main.bonus.get(i).paintComponent(g);
+			for (int i = 0; i < Main.bonuses.size(); i++) {
+				Main.bonuses.get(i).paintComponent(g);
 			}
 			g.drawString("Score: " + String.valueOf(Main.score), 10, 50);
 		}

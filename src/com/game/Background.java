@@ -19,9 +19,7 @@ public class Background extends JPanel {
 	private int y1 = 0;
 	private int x2 = 0;
 	private int y2 = 0;
-	private int speed = Main.speed;
 	private boolean init = true;
-	private TimeUnit unit;
 
 	public void init(int w, int h) {
 		if (init) {
@@ -33,18 +31,13 @@ public class Background extends JPanel {
 	}
 
 	public void update() {
-		if (Main.speed == 0) {
-			x1 = 0;
-			x2 = 0;
-		} else {
-			x1 -= Main.speed;
-			x2 -= Main.speed;
-			if (Math.abs(x1) >= width) {
-				x1 = width + (width - Math.abs(x1));
-			}
-			if (Math.abs(x2) >= width) {
-				x2 = width + (width - Math.abs(x2));
-			}
+		x1 -= Main.speed;
+		x2 -= Main.speed;
+		if (Math.abs(x1) >= width) {
+			x1 = width + (width - Math.abs(x1));
+		}
+		if (Math.abs(x2) >= width) {
+			x2 = width + (width - Math.abs(x2));
 		}
 	}
 
